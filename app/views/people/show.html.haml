@@ -1,0 +1,67 @@
+.page-header
+  %h1= "#{@person.full_name}"
+= link_to 'Добавить файлы', new_file_car_path(), class: 'btn btn-success'
+= link_to 'Оформить заказ наряд', new_check_list_path(person_id: params[:id]), class: 'btn btn-success'
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= Person.human_attribute_name(:mark_model)
+        %dd= @person.full_model
+      .col-md-2
+        %dt= Person.human_attribute_name(:number_car)
+        %dd= @person.number_car
+      .col-md-2
+        %dt= Person.human_attribute_name(:last_visit)
+        %dd= l @person.last_visit, format: :default
+    .row
+      .col-md-2
+        %dt= Person.human_attribute_name(:contact_phone)
+        %dd= @person.contact_phone
+      .col-md-2
+        %dt= Person.human_attribute_name(:fio)
+        %dd= @person.full_name
+      .col-md-2
+        %dt= Person.human_attribute_name(:description)
+        %dd= @person.description
+    .row
+      .col-md-6
+        %dt= Person.human_attribute_name(:files)
+        - @person.people_file_cars.each do |f|
+          - f.file_car.avatars.each do |file|
+            %dd= link_to "#{file.file.filename}", file.url ,target: '_blank'
+      .col-md-4
+        %dt= Person.human_attribute_name(:files_date)
+        - @person.people_file_cars.each do |f|
+          - f.file_car.avatars.each do |file|
+            %dd= l f.file_car.created_at, format: :long
+%br
+%br
+%table.table.table-hover.sortable
+  %thead
+    %tr
+      %th= CheckList.human_attribute_name(:admin_id)
+      %th= CheckList.human_attribute_name(:services)
+      %th= CheckList.human_attribute_name(:total_price)
+      %th= CheckList.human_attribute_name(:order_date)
+
+
+
+  %tbody
+    - @check_lists.each do |check_list|
+      %tr
+        %td= check_list.admin.present? ? (check_list.admin.full_name ) : "отсутствует"
+        %td
+          - check_list.orders.each do |o|
+            %dd= o.name_service + " #{o.price} " + "руб."
+        %td= "#{check_list.price} руб."
+        %td= check_list.order_date.present? ? (l check_list.order_date, format: :default) : "отсутствует"
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику клиентов', people_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_person_path(@person), class: 'btn btn-primary btn-sm'

@@ -1,0 +1,154 @@
+ru:
+  devise:
+    confirmations:
+      confirmed: "Your email address has been successfully confirmed."
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+    registrations:
+      user:
+        signed_up: Вы зарегистрированы в системе
+    sessions:
+      user:
+        signed_in: Вы успешно вошли
+    failure:
+      user:
+        unauthenticated:  Вы вышли из системы
+  app:
+
+    name: База клиентов
+    company:
+      short_name: БК
+  headers:
+    check_lists:
+      index: Все заказы
+      new: Новый заказ
+    file_cars:
+      new:  Добавление файлов
+    admins:
+      edit:  Редактирование данных мастера
+      show:  Мастер
+      index: Мастера
+      new: Новый мастер
+    people:
+      edit:  Редактирование данных клиента
+      show:  Клиент
+      index: Клиенты
+      new: Новый клиент
+    log_in:
+      index: Авторизация
+    excess_definitions:
+      new:   Расчитать новое значение
+      index: Ранее сделанные значения
+    rc4_programs:
+      new: Зашифровать новое сообщения
+      index: Список зашифрованных сообщений
+      edit: Редактирование сообщения
+    quick_pows:
+      new: Создание нового примера
+      index: Список примеров
+      edit: Редактирование примера
+  flash:
+    rc4_program:
+      present_string:   Ключ не может оставаться пустым
+      create: Сообщение успешно создано.
+      update: Сообщение успешно обновлёно.
+      delete: Сообщение успешно удалёно.
+    quick_pow:
+      create: Пример успешно создан.
+      update: Пример успешно обновлён.
+      delete: Пример успешно удалён.
+  sidebar:
+    h_value:                Определение превышения
+    modular_exponentiation: Алгоритм быстрого возведения в степень в кольце классов вычетов
+    rc4: Алгоритм RC4
+    people:                 Клиенты
+    check_lists:            Заказы
+    admins:                 Персонал
+  buttons:
+    edit: Редактировать
+
+    destroy: Удалить
+    show: Показать
+    back: Назад
+    confirm:
+      quick_pow: Действительно удалить пример?
+      rc4_program: Действительно удалить сообщение?
+    new:
+      admin:        Новый мастер
+      check_list:   Новый заказ
+      person:     Новый клиент
+      out:         Выйти
+      session:     Войти
+      rc4_program: Новое сообщение
+      quick_pow: Новый пример
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+  activerecord:
+    models:
+      rc4_program: Шифрование RC4
+      quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
+    attributes:
+      order:
+        price: Цена
+        name_service: Услуга
+      check_list:
+        order_date:   Дата выполнения работ
+        comment:      Комментарий
+        total_price:  Сумма заказ-наряда
+        created_at:   Дата оформлния заказ-наряда
+        services:     Услуги
+        person_id:    Клиент
+        user_id:      Менеджер
+        admin_id:      Менеджер
+        order_id:     Услуга
+        sale:         Процент мастера
+        price:        Цена
+      admin:
+        fio:           Ф.И.О.
+        first_name:    Фамилия
+        second_name:     Имя
+        patronymic:    Отчество
+      person:
+        files_date:   Дата прикрепления файла
+        files:        Файлы клиента
+        mark_model:   Автомобиль
+        description:  Подробная информация
+        mark_car:     Марка
+        model_car:    Модель
+        number_car:   ГОС номер
+        last_visit:   Дата последнего визита
+        fio:           Ф.И.О.
+        first_name:    Фамилия
+        second_name:     Имя
+        patronymic:    Отчество
+        sex:           Пол
+        contact_phone: Телефон
+      excess_definition:
+        angle: Угол
+        v_value:   Градусы
+        min:       Минуты
+        sec:       Секунды
+        d_value:   D
+        i_value:   I(пр)
+        h_value:   h
+        const:     V
+      rc4_program:
+        key: Ключ шифрования
+        transient_message: Передаваемое сообщение
+        chanted_message: Зашифрованных сообщение
+        message_text: Расшифрованное сообщение
+      quick_pow:
+        basis: Основание
+        exponent: Степень
+        ring_of_residues: Модуль
+        result: Результат

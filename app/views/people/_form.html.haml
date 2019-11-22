@@ -1,0 +1,39 @@
+= simple_form_for @person, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+  .well
+    .row
+      .col-md-4
+        .form-group
+          = f.input :mark_car
+      .col-md-4
+        .form-group
+          = f.input :model_car
+      .col-md-4
+        .form-group
+          = f.input :number_car
+    .row
+      .col-md-4
+        .form-group
+          = datepicker_field(f, :last_visit)
+      .col-md-4
+        .form-group
+          = f.input :contact_phone
+      .col-md-4
+        .form-group
+          = f.input :description
+
+    .row
+      .col-md-4
+        .form-group
+          = f.input :first_name
+      .col-md-4
+        .form-group
+          = f.input :second_name
+      .col-md-4
+        .form-group
+          = f.input :patronymic
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", Person,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

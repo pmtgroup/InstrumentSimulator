@@ -1,0 +1,33 @@
+.page-header
+  %h1= t('headers.log_in.index')
+
+%table.table.table-hover
+  %caption
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+  .row
+    .col-md-6
+      .form-group
+        .input-group.input-group-md
+          %span.input-group-addon.px50
+            %i.fa.fa-user
+          = f.email_field :email,  class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        .input-group.input-group-md
+          %span.input-group-addon.px50
+            %i.fa.fa-key
+          = f.password_field :password, class: 'form-control'
+  .row
+    .col-md-6
+      .checkbox
+        %label
+          = check_box_tag :remember_me, false, true
+          Запомнить меня
+  .row
+    .form-actions
+      .col-md-2
+        .actions
+          = f.submit "Войти"
+      
