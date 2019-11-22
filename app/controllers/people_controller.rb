@@ -14,6 +14,38 @@ class PeopleController < ApplicationController
     @check_lists = CheckList.where(person_id: @person.id)
   end
 
+  def spirometr
+    if params[:ofv1].present?
+      api_spirometr(params[:pos_exhalation].to_f, params[:ofv1].to_f, params[:fgel].to_f, params[:complect_id].to_i)
+    end
+  end
+
+
+  def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
+    require 'net/http'
+    require 'uri'
+    require 'json'
+    if pos_exhalation.present?
+
+      body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
+      # body_msg     = "pos_exhalation=#{pos_exhalation}&ofv1=#{ofv1}&fgel=#{fgel}&complect_id=#{complect_id}"
+      # raise body_msg.inspect
+      # raise body_msg.inspect
+      uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      # raise request.body.inspect
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+
+      # result = JSON.parse(response.body)
+      # raise result ["status"].inspect
+      redirect_to spirometr_person_path("test"), notice: 'Данные переданы'
+    else
+      redirect_to spirometr_person_path("test"), notice: 'Ошибка в данных'
+    end
+  end
   # GET /people/new
   def new
     @person = Person.new

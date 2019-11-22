@@ -15,7 +15,7 @@ ru:
         unauthenticated:  Вы вышли из системы
   app:
 
-    name: База клиентов
+    name: Эмулятор Приборов
     company:
       short_name: БК
   headers:
@@ -32,7 +32,7 @@ ru:
     people:
       edit:  Редактирование данных клиента
       show:  Клиент
-      index: Клиенты
+      index: Приборы
       new: Новый клиент
     log_in:
       index: Авторизация

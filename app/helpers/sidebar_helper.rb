@@ -3,8 +3,8 @@ module SidebarHelper
     result = []
     if current_user != nil
       result << {
-        :name => t('sidebar.people'),
-        :icon => 'address-card-o',
+        :name => "Приборы",
+        :icon => 'mobile ',
         :controller => :people,
         :action => :index
       }
