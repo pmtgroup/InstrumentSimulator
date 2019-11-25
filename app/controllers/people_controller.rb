@@ -1,4 +1,7 @@
 class PeopleController < ApplicationController
+  require 'net/http'
+  require 'uri'
+  require 'json'
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
@@ -26,27 +29,22 @@ class PeopleController < ApplicationController
     end
   end
 
+  def weigher
+    if params[:weight].present?
+      api_glucometr(params[:weight].to_f, params[:complect_id].to_i)
+    end
+  end
+
 
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
-    require 'net/http'
-    require 'uri'
-    require 'json'
     if pos_exhalation.present?
-
       body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
-      # body_msg     = "pos_exhalation=#{pos_exhalation}&ofv1=#{ofv1}&fgel=#{fgel}&complect_id=#{complect_id}"
-      # raise body_msg.inspect
-      # raise body_msg.inspect
       uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      # raise request.body.inspect
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
       end
-
-      # result = JSON.parse(response.body)
-      # raise result ["status"].inspect
       redirect_to spirometr_person_path("test"), notice: 'Данные переданы'
     else
       redirect_to spirometr_person_path("test"), notice: 'Ошибка в данных'
@@ -54,28 +52,32 @@ class PeopleController < ApplicationController
   end
 
   def api_glucometr(glucose, complect_id)
-    require 'net/http'
-    require 'uri'
-    require 'json'
     if glucose.present?
-
       body_msg     = "{\"glucose\":#{glucose},\"complect_id\":#{complect_id}}"
-      # body_msg     = "pos_exhalation=#{pos_exhalation}&ofv1=#{ofv1}&fgel=#{fgel}&complect_id=#{complect_id}"
-      # raise body_msg.inspect
-      # raise body_msg.inspect
       uri          = URI.parse("http://test.pmtlogin.ru/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      # raise request.body.inspect
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
       end
-
-      # result = JSON.parse(response.body)
-      # raise result ["status"].inspect
       redirect_to glucometr_person_path("test"), notice: 'Данные переданы'
     else
       redirect_to glucometr_person_path("test"), notice: 'Ошибка в данных'
+    end
+  end
+
+  def api_weigher(weight, complect_id)
+    if weight.present?
+      body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
+      uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+      redirect_to weigher_person_path("test"), notice: 'Данные переданы'
+    else
+      redirect_to weigher_person_path("test"), notice: 'Ошибка в данных'
     end
   end
   # GET /people/new
