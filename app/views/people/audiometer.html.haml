@@ -1,0 +1,53 @@
+.page-header
+  %h1= "Аудиометр"
+= simple_form_for '', method: :get, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+  .well
+    row
+      .col-md-12
+        .form-group
+          = f.input :ac_250_right, label: "Воздушная проводимость 250 Справа", value: params[:ac_250_right]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_500_right, label: "Воздушная проводимость 500 Справа", value: params[:ac_500_right]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_1000_right, label: "Воздушная проводимость 1000 Справа", value: params[:ac_1000_right]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_2000_right, label: "Воздушная проводимость 2000 Справа", value: params[:ac_2000_right]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_4000_right, label: "Воздушная проводимость 4000 Справа", value: params[:ac_4000_right]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_250_left, label: "Воздушная проводимость 250 Слева", value: params[:ac_250_left]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_500_left, label: "Воздушная проводимость 500 Слева", value: params[:ac_500_left]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_1000_left, label: "Воздушная проводимость 1000 Слева", value: params[:ac_1000_left]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_2000_left, label: "Воздушная проводимость 2000 Слева", value: params[:ac_2000_left]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :ac_4000_left, label: "Воздушная проводимость 5000 Слева", value: params[:ac_4000_left]
+
+    .row
+      .col-md-12
+        .form-group
+          = f.input :complect_id, label: "Прибор", value: params[:complect_id]
+  .inline
+    = submit_tag 'Отправить данные', class: 'btn btn-primary'
+    = link_to 'Назад',  people_path, class: 'btn btn-default'
+    .

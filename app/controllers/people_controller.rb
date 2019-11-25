@@ -41,6 +41,12 @@ class PeopleController < ApplicationController
     end
   end
 
+  def audiometer
+    if params[:ac_250_right].present?
+      api_audiometer(params)
+    end
+  end
+
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
     if pos_exhalation.present?
       body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
@@ -98,6 +104,21 @@ class PeopleController < ApplicationController
       redirect_to vibrotester_person_path("test"), notice: 'Данные переданы'
     else
       redirect_to vibrotester_person_path("test"), notice: 'Ошибка в данных'
+    end
+  end
+
+  def api_audiometer(params)
+    if params[:ac_250_right].present?
+      body_msg     = "{\"ac_250_right\":#{params[:ac_250_right]},\"ac_500_right\":#{params[:ac_500_right]},\"ac_1000_right\":#{params[:ac_1000_right]},\"ac_2000_right\":#{params[:ac_2000_right]},\"ac_4000_right\":#{params[:ac_4000_right]},\"ac_250_left\":#{params[:ac_250_left]},\"ac_500_left\":#{params[:ac_500_left]},\"ac_1000_left\":#{params[:ac_1000_left]},\"ac_2000_left\":#{params[:ac_2000_left]},\"ac_4000_left\":#{params[:ac_4000_left]},\"complect_id\":#{params[:complect_id]}}"
+      uri          = URI.parse("http://test.pmtlogin.ru/api/audiometer")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+      redirect_to audiometer_person_path("test"), notice: 'Данные переданы'
+    else
+      redirect_to audiometer_person_path("test"), notice: 'Ошибка в данных'
     end
   end
   # GET /people/new

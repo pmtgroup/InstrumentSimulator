@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'glucometr'
       get 'weigher'
       get 'vibrotester'
+      get 'audiometer'
     end
   end
   devise_for :users
