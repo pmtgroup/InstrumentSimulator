@@ -69,7 +69,7 @@ class PeopleController < ApplicationController
   def api_weigher(weight, complect_id)
     if weight.present?
       body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
+      uri          = URI.parse("http://test.pmtlogin.ru/api/weigher")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
