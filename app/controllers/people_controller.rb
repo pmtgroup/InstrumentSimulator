@@ -95,9 +95,9 @@ class PeopleController < ApplicationController
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
       end
-      redirect_to weigher_person_path("test"), notice: 'Данные переданы'
+      redirect_to vibrotester_person_path("test"), notice: 'Данные переданы'
     else
-      redirect_to weigher_person_path("test"), notice: 'Ошибка в данных'
+      redirect_to vibrotester_person_path("test"), notice: 'Ошибка в данных'
     end
   end
   # GET /people/new
