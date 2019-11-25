@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'spirometr'
       get 'glucometr'
       get 'weigher'
+      get 'vibrotester'
     end
   end
   devise_for :users

@@ -35,6 +35,11 @@ class PeopleController < ApplicationController
     end
   end
 
+  def vibrotester
+    if params[:weight].present?
+      api_vibrotester(params)
+    end
+  end
 
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
     if pos_exhalation.present?
@@ -70,6 +75,21 @@ class PeopleController < ApplicationController
     if weight.present?
       body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
       uri          = URI.parse("http://test.pmtlogin.ru/api/weigher")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+      redirect_to weigher_person_path("test"), notice: 'Данные переданы'
+    else
+      redirect_to weigher_person_path("test"), notice: 'Ошибка в данных'
+    end
+  end
+
+  def api_vibrotester(params)
+    if params[:hr63].present?
+      body_msg     = "{\"hr63\":#{params[:hr63]},\"hr125\":#{params[:hr125]},\"hr250\":#{params[:hr250]},\"hl63\":#{params[:hl63]},\"hl125\":#{params[:hl125]},\"hl250\":#{params[:hl250]},\"fr125\":#{params[:fr125]},\"fl125\":#{params[:fl125]},\"complect_id\":#{params[:complect_id]}}"
+      uri          = URI.parse("http://test.pmtlogin.ru/api/vibrotester")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
