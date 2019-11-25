@@ -36,7 +36,7 @@ class PeopleController < ApplicationController
   end
 
   def vibrotester
-    if params[:weight].present?
+    if params[:hr63].present?
       api_vibrotester(params)
     end
   end
