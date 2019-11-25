@@ -31,7 +31,7 @@ class PeopleController < ApplicationController
 
   def weigher
     if params[:weight].present?
-      api_glucometr(params[:weight].to_f, params[:complect_id].to_i)
+      api_weigher(params[:weight].to_f, params[:complect_id].to_i)
     end
   end
 
