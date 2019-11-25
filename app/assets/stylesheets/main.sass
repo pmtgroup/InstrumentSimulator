@@ -44,21 +44,30 @@
 .has-error .form-control:focus, .form-control:focus
   box-shadow: none
 .menu
-  // align-items: center
+
   display: flex
-  justify-content: space-evenly
-  flex-wrap: wrap
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  //
+  // display: flex
+  // justify-content: space-evenly
+  // flex-wrap: wrap
   // flex-direction: column
   .btn
+    width: 20%
     padding: 10px 10px
-    max-width: 150px
+    // max-width: 150px
     margin-bottom: 15px
     // background-color: red
-    flex-basis: 250px
+    // flex-basis: 250px
 .field_with_errors
   @extend .has-error
 
 @media (max-width: 850px)
+  .menu
+    .btn
+      width: 60%
   #sidebar-wrapper
     display: none
   #wrapper
