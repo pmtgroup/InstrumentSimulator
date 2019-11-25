@@ -4,8 +4,13 @@
 %table.table.table-hover
   %caption
     = link_to spirometr_person_path("test"), class: 'btn btn-success' do
-      = fa_icon :check 
+      = fa_icon :check
       = "Спирометр"
+    %br
+    %br
+    = link_to glucometr_person_path("test"), class: 'btn btn-success' do
+      = fa_icon :check
+      = "Глюкометр"
 
 -# .row
 -# .row
