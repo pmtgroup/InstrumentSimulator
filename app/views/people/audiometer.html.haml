@@ -2,7 +2,7 @@
   %h1= "Аудиометр"
 = simple_form_for '', method: :get, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
   .well
-    row
+    .row
       .col-md-12
         .form-group
           = f.input :ac_250_right, label: "Воздушная проводимость 250 Справа", value: params[:ac_250_right]
