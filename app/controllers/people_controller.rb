@@ -66,14 +66,14 @@ class PeopleController < ApplicationController
   def api_glucometr(glucose, complect_id)
     if glucose.present?
       body_msg     = "{\"glucose\":#{glucose},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/blood_glucose_meter")
+      uri          = URI.parse("http://localhost:3000/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
-      redirect_to spirometr_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+      redirect_to glucometr_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
     else
       redirect_to glucometr_person_path("test"), notice: 'Ошибка в данных'
     end
@@ -82,14 +82,14 @@ class PeopleController < ApplicationController
   def api_weigher(weight, complect_id)
     if weight.present?
       body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/weigher")
+      uri          = URI.parse("http://localhost:3000/api/weigher")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
-      redirect_to spirometr_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+      redirect_to weigher_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
     else
       redirect_to weigher_person_path("test"), notice: 'Ошибка в данных'
     end
@@ -105,7 +105,7 @@ class PeopleController < ApplicationController
         http.request(request)
       end
       result = JSON.parse(response.body)
-      redirect_to spirometr_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+      redirect_to vibrotester_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
     else
       redirect_to vibrotester_person_path("test"), notice: 'Ошибка в данных'
     end
@@ -121,7 +121,7 @@ class PeopleController < ApplicationController
         http.request(request)
       end
       result = JSON.parse(response.body)
-      redirect_to spirometr_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+      redirect_to audiometer_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
     else
       redirect_to audiometer_person_path("test"), notice: 'Ошибка в данных'
     end
