@@ -50,7 +50,7 @@ class PeopleController < ApplicationController
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
     if pos_exhalation.present?
       body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:2000/api/spiroment")
+      uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
@@ -66,7 +66,7 @@ class PeopleController < ApplicationController
   def api_glucometr(glucose, complect_id)
     if glucose.present?
       body_msg     = "{\"glucose\":#{glucose},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:2000/api/blood_glucose_meter")
+      uri          = URI.parse("http://test.pmtlogin.ru/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
