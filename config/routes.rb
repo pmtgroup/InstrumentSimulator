@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :people do
     member do
+      get 'heart_rate'
+      get 'ad'
       get 'spirometr'
       get 'glucometr'
       get 'weigher'

@@ -2,6 +2,14 @@
   %h1= t('headers.people.index')
 
 %nav{class: 'menu'}
+  = link_to ad_person_path("test"), class: 'btn btn-success' do
+    = fa_icon :check
+    = "АД"
+
+  = link_to heart_rate_person_path("test"), class: 'btn btn-success' do
+    = fa_icon :check
+    = "ЧСС"
+
   = link_to spirometr_person_path("test"), class: 'btn btn-success' do
     = fa_icon :check
     = "Спирометр"

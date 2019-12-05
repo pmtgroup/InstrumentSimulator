@@ -1,0 +1,19 @@
+.page-header.text-center
+  %h1= "АД"
+= simple_form_for '', method: :get, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+  .well
+    .row
+      .col-md-12
+        .form-group
+          = f.input :systolic_bp, label: "САД", placeholder: "Формат:  99", value: params[:systolic_bp]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :diastolic_bp, label: "ДАД", placeholder: "Формат:  99", value: params[:diastolic_bp]
+    .row
+      .col-md-12
+        .form-group
+          = f.input :complect_id, label: "Прибор", value: params[:complect_id]
+  .inline
+    = submit_tag 'Отправить данные', class: 'btn btn-primary'
+    = link_to 'Назад',  people_path, class: 'btn btn-default'

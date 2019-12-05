@@ -17,6 +17,18 @@ class PeopleController < ApplicationController
     @check_lists = CheckList.where(person_id: @person.id)
   end
 
+  def ad
+    if params[:systolic_bp].present?
+      api_ad(params[:systolic_bp].to_i, params[:diastolic_bp].to_i, params[:complect_id].to_i)
+    end
+  end
+
+  def heart_rate
+    if params[:heart_rate].present?
+      api_heart_rate(params[:heart_rate].to_i, params[:complect_id].to_i)
+    end
+  end
+
   def spirometr
     if params[:ofv1].present?
       api_spirometr(params[:pos_exhalation].to_f, params[:ofv1].to_f, params[:fgel].to_f, params[:complect_id].to_i)
@@ -44,6 +56,38 @@ class PeopleController < ApplicationController
   def audiometer
     if params[:ac_250_right].present?
       api_audiometer(params)
+    end
+  end
+
+  def api_ad(systolic_bp, diastolic_bp, complect_id)
+    if systolic_bp.present?
+      body_msg     = "{\"systolic_bp\":#{systolic_bp},\"diastolic_bp\":\"#{diastolic_bp}\",\"complect_id\":#{complect_id}}"
+      uri          = URI.parse("http://localhost:3000/api/ad")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+      result = JSON.parse(response.body)
+      redirect_to ad_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+    else
+      redirect_to ad_person_path("test"), notice: 'Ошибка в данных'
+    end
+  end
+
+  def api_heart_rate(heart_rate, complect_id)
+    if heart_rate.present?
+      body_msg     = "{\"heart_rate\":#{heart_rate},\"complect_id\":#{complect_id}}"
+      uri          = URI.parse("http://localhost:3000/api/heart_rate")
+      request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      request.body = body_msg
+      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+      result = JSON.parse(response.body)
+      redirect_to heart_rate_person_path("test"), notice: "#{result["status"]} #{result["message"]}"
+    else
+      redirect_to heart_rate_person_path("test"), notice: 'Ошибка в данных'
     end
   end
 
