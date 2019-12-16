@@ -62,7 +62,7 @@ class PeopleController < ApplicationController
   def api_ad(systolic_bp, diastolic_bp, complect_id)
     if systolic_bp.present?
       body_msg     = "{\"systolic_bp\":#{systolic_bp},\"diastolic_bp\":\"#{diastolic_bp}\",\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:3000/api/ad")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/ad")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
@@ -78,7 +78,7 @@ class PeopleController < ApplicationController
   def api_heart_rate(heart_rate, complect_id)
     if heart_rate.present?
       body_msg     = "{\"heart_rate\":#{heart_rate},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:3000/api/heart_rate")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/heart_rate")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
@@ -94,7 +94,7 @@ class PeopleController < ApplicationController
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
     if pos_exhalation.present?
       body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/spiroment")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/spiroment")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
@@ -110,7 +110,7 @@ class PeopleController < ApplicationController
   def api_glucometr(glucose, complect_id)
     if glucose.present?
       body_msg     = "{\"glucose\":#{glucose},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:3000/api/blood_glucose_meter")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
@@ -126,7 +126,7 @@ class PeopleController < ApplicationController
   def api_weigher(weight, complect_id)
     if weight.present?
       body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("http://localhost:3000/api/weigher")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/weigher")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
