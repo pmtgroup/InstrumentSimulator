@@ -65,7 +65,7 @@ class PeopleController < ApplicationController
       uri          = URI.parse("https://stage.pmtonline.ru/api/ad")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -81,7 +81,7 @@ class PeopleController < ApplicationController
       uri          = URI.parse("https://stage.pmtonline.ru/api/heart_rate")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -97,7 +97,7 @@ class PeopleController < ApplicationController
       uri          = URI.parse("https://stage.pmtonline.ru/api/spiroment")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -113,7 +113,7 @@ class PeopleController < ApplicationController
       uri          = URI.parse("https://stage.pmtonline.ru/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -129,7 +129,7 @@ class PeopleController < ApplicationController
       uri          = URI.parse("https://stage.pmtonline.ru/api/weigher")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -142,10 +142,10 @@ class PeopleController < ApplicationController
   def api_vibrotester(params)
     if params[:hr63].present?
       body_msg     = "{\"hr63\":#{params[:hr63]},\"hr125\":#{params[:hr125]},\"hr250\":#{params[:hr250]},\"hl63\":#{params[:hl63]},\"hl125\":#{params[:hl125]},\"hl250\":#{params[:hl250]},\"fr125\":#{params[:fr125]},\"fl125\":#{params[:fl125]},\"complect_id\":#{params[:complect_id]}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/vibrotester")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/vibrotester")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
@@ -158,10 +158,10 @@ class PeopleController < ApplicationController
   def api_audiometer(params)
     if params[:ac_250_right].present?
       body_msg     = "{\"ac_250_right\":#{params[:ac_250_right]},\"ac_500_right\":#{params[:ac_500_right]},\"ac_1000_right\":#{params[:ac_1000_right]},\"ac_2000_right\":#{params[:ac_2000_right]},\"ac_4000_right\":#{params[:ac_4000_right]},\"ac_250_left\":#{params[:ac_250_left]},\"ac_500_left\":#{params[:ac_500_left]},\"ac_1000_left\":#{params[:ac_1000_left]},\"ac_2000_left\":#{params[:ac_2000_left]},\"ac_4000_left\":#{params[:ac_4000_left]},\"complect_id\":#{params[:complect_id]}}"
-      uri          = URI.parse("http://test.pmtlogin.ru/api/audiometer")
+      uri          = URI.parse("https://stage.pmtonline.ru/api/audiometer")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(request)
       end
       result = JSON.parse(response.body)
