@@ -1,0 +1,18 @@
+= simple_form_for @register_signal, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :number_register
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.association :control_tool, collection: ControlTool.all.map{|x| [x.id, x.id]}
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", RegisterSignal,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

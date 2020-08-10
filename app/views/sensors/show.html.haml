@@ -1,0 +1,33 @@
+.page-header
+  %h1= "#{@sensor.id}"
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= Sensor.human_attribute_name :sensor_presence
+        %dd= @sensor.sensor_presence
+      .col-md-2
+        %dt= Sensor.human_attribute_name :sensor_lv1
+        %dd= @sensor.sensor_lv1
+
+      .col-md-2
+        %dt=  Sensor.human_attribute_name :sensor_lv2
+        %dd= @sensor.sensor_lv2
+    .row
+      .col-md-2
+        %dt= Sensor.human_attribute_name :sensor_tivl
+        %dd= @sensor.sensor_tivl
+
+      .col-md-2
+        %dt= Sensor.human_attribute_name :control_tool
+        %dd= @sensor.control_tool.id
+
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику сенсоров', sensors_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_sensor_path(@sensor), class: 'btn btn-primary btn-sm'

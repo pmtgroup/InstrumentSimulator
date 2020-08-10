@@ -1,0 +1,14 @@
+= simple_form_for @control_tool, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.association :workpoint
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", ControlTool,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

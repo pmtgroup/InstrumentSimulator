@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :sensors
+  resources :measurement_gauges
+  resources :register_signals
+  resources :control_tools
+  resources :workpoints
+  resources :workplaces
+  resources :subdivisions
+  resources :companies
   root 'people#index'
 
 

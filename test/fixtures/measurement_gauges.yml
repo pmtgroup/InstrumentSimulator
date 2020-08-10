@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_guage: 1
+  control_tool_id: 
+  number_vibration_sensor: 1
+  number_local_vibration_sensor1: 1
+  number_local_vibration_sensor2: 1
+  number_noise_sensor: 1
+  number_infrasound_sensor: 1
+
+two:
+  number_guage: 1
+  control_tool_id: 
+  number_vibration_sensor: 1
+  number_local_vibration_sensor1: 1
+  number_local_vibration_sensor2: 1
+  number_noise_sensor: 1
+  number_infrasound_sensor: 1

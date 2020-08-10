@@ -1,0 +1,21 @@
+.page-header
+  %h1= "#{@register_signal.number_register}"
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= RegisterSignal.human_attribute_name(:number_register)
+        %dd= @register_signal.number_register
+    .row
+      .col-md-2
+        %dt= RegisterSignal.human_attribute_name(:control_tool)
+        %dd= @register_signal.control_tool.id
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику регистраторов', register_signals_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_register_signal_path(@register_signal), class: 'btn btn-primary btn-sm'

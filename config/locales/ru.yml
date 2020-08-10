@@ -19,6 +19,46 @@ ru:
     company:
       short_name: БК
   headers:
+    sensors:
+      index: Сенсоры
+      edit: Редактировать сенсор
+      show: Сенсор
+      new: Новый сенсор
+    measurement_gauges:
+      index: Датчики измерения ВПФ
+      edit: Редактировать датчик
+      show: Датчик измерения ВПФ
+      new: Новый датчик измерения ВПФ
+    register_signals:
+      index: Регистраторы сигналов
+      edit: Редактирование регистратора сигналов
+      show: Регистратор сигналов
+      new: Новый регистратор сигналов
+    control_tools:
+      index: Средства контроля ВПФ
+      edit: Редактирование Средства контроля
+      show: Средство контроля ВПФ
+      new: Новое Средство контроля ВПФ
+    workpoints:
+      index: Рабочие точки
+      edit: Редактирование рабочий точки
+      show: Рабочая точка
+      new: Новое рабочая точка
+    workplaces:
+      index: Рабочие места
+      edit: Редактирование рабочего места
+      show: Рабочее место
+      new: Новое рабочее место
+    subdivisions:
+      index: Подразделения
+      edit: Редактирование подразделения
+      show: Подразделение
+      new: Новое подразделение
+    companies:
+      index: Предприятия
+      edit: Редактирование предприятия
+      show: Предприятие
+      new: Новое предприятие
     check_lists:
       index: Все заказы
       new: Новый заказ
@@ -89,6 +129,7 @@ ru:
       next: →
       truncate: …
   helpers:
+    sure: Вы уверены?
     submit:
       create: Сохранить
       submit: Сохранить
@@ -98,6 +139,49 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      sensor:
+        control_tool: ID средства контроля
+        sensor_presence: ID сенсор присутствия
+        sensor_lv1: ID сенсора локальной вибрации 1
+        sensor_lv2: ID сенсора локальной вибрации 2
+        sensor_tivl: ID датчика ТиВл
+      measurement_gauge:
+        number_guage: ID
+        control_tool: ID средства контроля
+        number_vibration_sensor: ID датчика общей вибрации
+        number_local_vibration_sensor1: ID датчика локальной вибрации 1
+        number_local_vibration_sensor2: ID датчика локальной вибрации 2
+        number_noise_sensor:            ID датчика шума
+        number_infrasound_sensor:       ID датчика инфразвука
+      register_signal:
+        number_register: ID регистратора
+        id: ID
+        control_tool: Средство контроля
+      control_tool:
+        id: ID
+        workpoint: Рабочая точка
+      workpoint:
+        name:        Наименование
+        description: Описание
+        description_file: Файл описания
+        type_vpf:    Вид измеряемого ВПФ
+        workplace: Рабочее место
+      workplace:
+        type_vpf: Тип ВПФ на рабочем месте
+        shift_duration: Продолжительность одной рабочей смены
+        number_of_shift: Количество рабочих смен в сутки
+        subdivision: Подразделение
+      subdivision:
+        name: Наименование подразделения
+        full_name: Наименование подразделения полное
+        company: Предприятие
+      company:
+        name: Наименование придприятия
+        full_name:  Наименование придприятия полное
+        inn:        ИНН
+        orgn:       ОГРН
+        kind_of_action: Вид деятельности
+        location:       Место нахождения
       order:
         price: Цена
         name_service: Услуга

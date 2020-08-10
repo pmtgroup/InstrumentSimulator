@@ -1,0 +1,31 @@
+.page-header.text-center
+  %h1= t('headers.workpoints.show')
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= Workpoint.human_attribute_name(:name)
+        %dd= @workpoint.name
+      .col-md-2
+        %dt= Workpoint.human_attribute_name(:description)
+        %dd= @workpoint.description
+      .col-md-2
+        %dt= Workpoint.human_attribute_name(:description_file)
+        %dd= @workpoint.description_file? ? (link_to "#{@workpoint.description_file.file.filename}", @workpoint.description_file.url ,target: '_blank') : "Файл отсутствует"
+
+    .row
+      .col-md-2
+        %dt= Workpoint.human_attribute_name(:type_vpf)
+        %dd= @workpoint.type_vpf
+      .col-md-2
+        %dt= Workpoint.human_attribute_name(:workplace)
+        %dd= @workpoint.workplace.id
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику рабочих точек', workpoints_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_workpoint_path(@workpoint), class: 'btn btn-primary btn-sm'

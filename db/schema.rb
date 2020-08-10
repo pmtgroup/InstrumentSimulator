@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191112130932) do
+ActiveRecord::Schema.define(version: 20200810122729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "full_name"
+    t.string   "inn"
+    t.string   "orgn"
+    t.string   "kind_of_action"
+    t.text     "location"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "control_tools", force: :cascade do |t|
+    t.integer  "workpoint_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "control_tools", ["workpoint_id"], name: "index_control_tools_on_workpoint_id", using: :btree
+
+  create_table "measurement_gauges", force: :cascade do |t|
+    t.integer  "number_guage"
+    t.integer  "control_tool_id"
+    t.string   "number_vibration_sensor"
+    t.string   "number_local_vibration_sensor1"
+    t.string   "number_local_vibration_sensor2"
+    t.string   "number_noise_sensor"
+    t.string   "number_infrasound_sensor"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "measurement_gauges", ["control_tool_id"], name: "index_measurement_gauges_on_control_tool_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
@@ -31,6 +64,37 @@ ActiveRecord::Schema.define(version: 20191112130932) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "register_signals", force: :cascade do |t|
+    t.string   "number_register"
+    t.integer  "control_tool_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "register_signals", ["control_tool_id"], name: "index_register_signals_on_control_tool_id", using: :btree
+
+  create_table "sensors", force: :cascade do |t|
+    t.integer  "control_tool_id"
+    t.string   "sensor_presence"
+    t.string   "sensor_lv1"
+    t.string   "sensor_lv2"
+    t.string   "sensor_tivl"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sensors", ["control_tool_id"], name: "index_sensors_on_control_tool_id", using: :btree
+
+  create_table "subdivisions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "full_name"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subdivisions", ["company_id"], name: "index_subdivisions_on_company_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -44,4 +108,34 @@ ActiveRecord::Schema.define(version: 20191112130932) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "workplaces", force: :cascade do |t|
+    t.string   "type_vpf"
+    t.integer  "shift_duration"
+    t.integer  "number_of_shift"
+    t.integer  "subdivision_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "workplaces", ["subdivision_id"], name: "index_workplaces_on_subdivision_id", using: :btree
+
+  create_table "workpoints", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "type_vpf"
+    t.integer  "workplace_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "description_file"
+  end
+
+  add_index "workpoints", ["workplace_id"], name: "index_workpoints_on_workplace_id", using: :btree
+
+  add_foreign_key "control_tools", "workpoints"
+  add_foreign_key "measurement_gauges", "control_tools"
+  add_foreign_key "register_signals", "control_tools"
+  add_foreign_key "sensors", "control_tools"
+  add_foreign_key "subdivisions", "companies"
+  add_foreign_key "workplaces", "subdivisions"
+  add_foreign_key "workpoints", "workplaces"
 end

@@ -1,0 +1,32 @@
+.page-header.text-center
+  %h1= t('headers.control_tools.index')
+= link_to new_control_tool_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = "Создать Средство контроля"
+
+%br
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+    %th= ControlTool.human_attribute_name :id
+    %th= ControlTool.human_attribute_name :workpoint
+    %th
+    %th
+    %th
+
+  %tbody
+    - @control_tools.each do |control_tool|
+      %tr
+        %td= control_tool.id
+        %td= control_tool.workpoint.name
+        %td
+          = link_to control_tool, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_control_tool_path(control_tool), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to control_tool, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times
