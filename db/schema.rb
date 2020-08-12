@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200810122729) do
+ActiveRecord::Schema.define(version: 20200812095234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,31 @@ ActiveRecord::Schema.define(version: 20200810122729) do
 
   add_index "sensors", ["control_tool_id"], name: "index_sensors_on_control_tool_id", using: :btree
 
+  create_table "staff_workers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "patronymic"
+    t.integer  "subdivision_id"
+    t.date     "birthday"
+    t.date     "duration_work"
+    t.string   "labor_activity_type"
+    t.string   "labor_activity_category"
+    t.integer  "duration_one_shift"
+    t.integer  "workplace_id"
+    t.integer  "work_in_workplace"
+    t.text     "description_operation"
+    t.integer  "additional_workplace_id"
+    t.integer  "additional_work_in_workplace"
+    t.text     "additional_description_operation"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "position"
+  end
+
+  add_index "staff_workers", ["additional_workplace_id"], name: "index_staff_workers_on_additional_workplace_id", using: :btree
+  add_index "staff_workers", ["subdivision_id"], name: "index_staff_workers_on_subdivision_id", using: :btree
+  add_index "staff_workers", ["workplace_id"], name: "index_staff_workers_on_workplace_id", using: :btree
+
   create_table "subdivisions", force: :cascade do |t|
     t.string   "name"
     t.string   "full_name"
@@ -135,6 +160,8 @@ ActiveRecord::Schema.define(version: 20200810122729) do
   add_foreign_key "measurement_gauges", "control_tools"
   add_foreign_key "register_signals", "control_tools"
   add_foreign_key "sensors", "control_tools"
+  add_foreign_key "staff_workers", "subdivisions"
+  add_foreign_key "staff_workers", "workplaces"
   add_foreign_key "subdivisions", "companies"
   add_foreign_key "workplaces", "subdivisions"
   add_foreign_key "workpoints", "workplaces"

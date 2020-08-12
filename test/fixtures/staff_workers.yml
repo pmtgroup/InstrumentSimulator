@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  surname: MyString
+  patronymic: MyString
+  subdivision_id: 
+  birthday: 2020-08-12
+  duration_work: 2020-08-12
+  labor_activity_type: MyString
+  labor_activity_category: MyString
+  duration_one_shift: 1
+  workplace_id: 
+  work_in_workplace: 1
+  description_operation: MyText
+  additional_work_in_workplace: 1
+  additional_description_operation: MyText
+
+two:
+  name: MyString
+  surname: MyString
+  patronymic: MyString
+  subdivision_id: 
+  birthday: 2020-08-12
+  duration_work: 2020-08-12
+  labor_activity_type: MyString
+  labor_activity_category: MyString
+  duration_one_shift: 1
+  workplace_id: 
+  work_in_workplace: 1
+  description_operation: MyText
+  additional_work_in_workplace: 1
+  additional_description_operation: MyText

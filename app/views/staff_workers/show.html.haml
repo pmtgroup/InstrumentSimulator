@@ -1,0 +1,60 @@
+.page-header
+  %h3= "Работник - #{@staff_worker.surname} #{@staff_worker.name} #{@staff_worker.patronymic}"
+  %h3= "ID - #{@staff_worker.id}"
+%br/
+%br/
+.col-md-6.col-md-offset-3
+  .row
+    %table.table.table-striped
+
+      %tbody
+        %tr
+          %td= StaffWorker.human_attribute_name :full_name
+          %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+        %tr
+          %td= StaffWorker.human_attribute_name :subdivision
+          %td= @staff_worker.subdivision.name
+        %tr
+          %td= StaffWorker.human_attribute_name :birthday
+          %td= l @staff_worker.birthday, format: :default
+        %tr
+          %td= StaffWorker.human_attribute_name :position
+          %td= @staff_worker.position
+        %tr
+          %td= StaffWorker.human_attribute_name :duration_work
+          %td= l @staff_worker.duration_work, format: :default
+        %tr
+          %td= StaffWorker.human_attribute_name :labor_activity_type
+          %td= @staff_worker.labor_activity_type
+        %tr
+          %td= StaffWorker.human_attribute_name :labor_activity_category
+          %td= @staff_worker.labor_activity_category
+
+
+        %tr
+          %td= StaffWorker.human_attribute_name :duration_one_shift
+          %td= @staff_worker.duration_one_shift
+        %tr
+          %td= StaffWorker.human_attribute_name :workplace
+          %td= @staff_worker.workplace.id
+        %tr
+          %td= StaffWorker.human_attribute_name :work_in_workplace
+          %td= @staff_worker.work_in_workplace
+        %tr
+          %td= StaffWorker.human_attribute_name :description_operation
+          %td= @staff_worker.description_operation
+        %tr
+          %td= StaffWorker.human_attribute_name :additional_workplace
+          %td= @staff_worker.additional_workplace.id
+        %tr
+          %td= StaffWorker.human_attribute_name :additional_work_in_workplace
+          %td= @staff_worker.additional_work_in_workplace
+        %tr
+          %td= StaffWorker.human_attribute_name :additional_description_operation
+          %td= @staff_worker.additional_description_operation
+
+  .text-center
+    %br/
+    %br/
+    = link_to 'К кспику работников', staff_workers_path, class: 'btn btn-primary btn-sm'
+    = link_to 'Изменить', edit_staff_worker_path(@staff_worker), class: 'btn btn-primary btn-sm'

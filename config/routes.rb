@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :staff_workers
   resources :sensors
   resources :measurement_gauges
   resources :register_signals

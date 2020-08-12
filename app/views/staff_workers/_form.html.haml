@@ -1,0 +1,69 @@
+= simple_form_for @staff_worker, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :name
+    .col-md-8
+      .form-group
+        = f.input :surname
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :patronymic
+    .col-md-8
+      .form-group
+        = f.association :subdivision
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = datepicker_field(f, :birthday)
+    .col-md-8
+      .form-group
+        = f.input :position
+    .col-md-8
+      .form-group
+        = datepicker_field(f, :duration_work)
+  .row.col-md-offset-3
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :labor_activity_type
+    .col-md-8
+      .form-group
+        = f.input :labor_activity_category
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :duration_one_shift
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.association :workplace, collection: Workplace.all.map{|x| [x.id, x.id]}
+    .col-md-8
+      .form-group
+        = f.input :work_in_workplace
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :description_operation
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.association :additional_workplace, collection: Workplace.all.map{|x| [x.id, x.id]}
+    .col-md-8
+      .form-group
+        = f.input :additional_work_in_workplace
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :additional_description_operation
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", StaffWorker,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

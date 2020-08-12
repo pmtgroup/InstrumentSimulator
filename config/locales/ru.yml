@@ -19,6 +19,11 @@ ru:
     company:
       short_name: БК
   headers:
+    staff_workers:
+      index: Работники
+      edit: Редактирование данных работника
+      show: Работник
+      new: Новый работник
     sensors:
       index: Сенсоры
       edit: Редактировать сенсор
@@ -139,6 +144,24 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      staff_worker:
+        full_name: Ф.И.О.
+        name:   Имя
+        surname: Фамилия
+        patronymic: Отчество
+        subdivision: Подразделение
+        birthday:   Дата рождения
+        position:  Должность
+        duration_work: Дата начала работы в текущей должности
+        labor_activity_type: Трудовая деятельность (тип)
+        labor_activity_category: Трудовая деятельность (категория)
+        duration_one_shift:     Продолжительность одной рабочей смены
+        workplace:            Основное рабочее место (с наличием ВПФ)
+        work_in_workplace:   Длительность времени работы на основном рабочем месте за смену
+        description_operation: Описание регулярно выполняемых операций на основном рабочем месте
+        additional_workplace: Дополнительное рабочее место (с наличием ВПФ)
+        additional_work_in_workplace: Длительность времени работы на дополнительном рабочем месте за смену
+        additional_description_operation: Описание регулярно выполняемых операций на дополнительном рабочем месте
       sensor:
         control_tool: ID средства контроля
         sensor_presence: ID сенсор присутствия

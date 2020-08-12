@@ -3,6 +3,12 @@ module SidebarHelper
     result = []
     if current_user != nil
       result << {
+        :name => "Работники",
+        :icon => 'vcard  ',
+        :controller => :staff_workers,
+        :action => :index
+      }
+      result << {
         :name => "Предприятия",
         :icon => 'university  ',
         :controller => :companies,
