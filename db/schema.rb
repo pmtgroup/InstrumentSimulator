@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200812095234) do
+ActiveRecord::Schema.define(version: 20200812133800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,30 @@ ActiveRecord::Schema.define(version: 20200812095234) do
   end
 
   add_index "measurement_gauges", ["control_tool_id"], name: "index_measurement_gauges_on_control_tool_id", using: :btree
+
+  create_table "noise_indicators", force: :cascade do |t|
+    t.string   "terms"
+    t.float    "frequency_31"
+    t.float    "frequency_63"
+    t.float    "frequency_125"
+    t.float    "frequency_250"
+    t.float    "frequency_500"
+    t.float    "frequency_1000"
+    t.float    "frequency_2000"
+    t.float    "frequency_4000"
+    t.float    "frequency_8000"
+    t.integer  "staff_worker_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.float    "min_lvl"
+    t.float    "max_lvl"
+    t.float    "pulse_noise"
+    t.float    "peak_lvl"
+    t.float    "equivalent_lvl"
+    t.string   "character_noise"
+  end
+
+  add_index "noise_indicators", ["staff_worker_id"], name: "index_noise_indicators_on_staff_worker_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
@@ -158,6 +182,7 @@ ActiveRecord::Schema.define(version: 20200812095234) do
 
   add_foreign_key "control_tools", "workpoints"
   add_foreign_key "measurement_gauges", "control_tools"
+  add_foreign_key "noise_indicators", "staff_workers"
   add_foreign_key "register_signals", "control_tools"
   add_foreign_key "sensors", "control_tools"
   add_foreign_key "staff_workers", "subdivisions"

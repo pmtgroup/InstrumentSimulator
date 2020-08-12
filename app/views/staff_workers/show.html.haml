@@ -5,6 +5,13 @@
 %br/
 .col-md-6.col-md-offset-3
   .row
+    = link_to new_noise_indicator_path(worker_id: params[:id]), class: 'btn btn-success' do
+      = fa_icon :plus
+      = "Добавить показатели шума"
+%br/
+%br/
+.col-md-6.col-md-offset-3
+  .row
     %table.table.table-striped
 
       %tbody
@@ -58,3 +65,90 @@
     %br/
     = link_to 'К кспику работников', staff_workers_path, class: 'btn btn-primary btn-sm'
     = link_to 'Изменить', edit_staff_worker_path(@staff_worker), class: 'btn btn-primary btn-sm'
+%br/
+%br/
+%br/
+%br/
+
+.col-md-3.col-md-offset-1
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{ colspan: 3 }= "Показатели шума"
+      %thead
+        %tr
+          %th= "ID"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+
+      %tbody
+        - @noise_indicators.each do |noise_indicator|
+          %tr
+            %td= noise_indicator.id
+            %td= "#{l noise_indicator.created_at.to_date, format: :long} #{noise_indicator.created_at.to_s.split(' ')[1]}"
+            %td= noise_indicator.terms
+            %td
+              = link_to noise_indicator, class: 'btn btn-success' do
+                = fa_icon :eye
+      -# %thead
+      -#   %tr
+      -#     %th{ colspan: 2 }= "Шум"
+      -# %thead
+      -#   %tr
+      -#     %th= "Результаты расчёта эквивалентных уровней за рабочую смену"
+      -#     %th= "Показатели"
+      -# %tbody
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :terms
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :min_lvl
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :max_lvl
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :pulse_noise
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :peak_lvl
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :equivalent_lvl
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :character_noise
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td{ colspan: 2 }= "Эквивалентные уровни звукового давления за смену (дБ) в октавных полосах частот (Гц):"
+      -#
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_31
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_63
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_125
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_250
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_500
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_1000
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_2000
+      -#     %td= @staff_worker.subdivision.name
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_4000
+      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
+      -#   %tr
+      -#     %td= NoiseIndicator.human_attribute_name :frequency_8000
+      -#     %td= @staff_worker.subdivision.name

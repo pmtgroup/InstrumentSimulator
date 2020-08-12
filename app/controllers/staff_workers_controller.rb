@@ -10,6 +10,7 @@ class StaffWorkersController < ApplicationController
   # GET /staff_workers/1
   # GET /staff_workers/1.json
   def show
+    @noise_indicators = NoiseIndicator.where(staff_worker_id: @staff_worker.id)
   end
 
   # GET /staff_workers/new

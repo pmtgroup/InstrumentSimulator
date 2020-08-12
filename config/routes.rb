@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :noise_indicators
   resources :staff_workers
   resources :sensors
   resources :measurement_gauges

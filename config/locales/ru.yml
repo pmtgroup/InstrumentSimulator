@@ -15,7 +15,7 @@ ru:
         unauthenticated:  Вы вышли из системы
   app:
 
-    name: Эмулятор Приборов
+    name: АСО ВПФ
     company:
       short_name: БК
   headers:
@@ -144,6 +144,28 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      noise_indicator:
+        terms:            Условия измерения
+        noise_level:      Эквивалентный уровень звука А за рабочую смену Leq (А)
+        conditions:       Условия измерения
+        min_lvl:          Минимальный уровень L(AS)min
+        max_lvl:          Максимальный уровень L(AS)max
+        pulse_noise:      Импульсный шум L(AI)
+        peak_lvl:         Пиковый уровень L(С)пик
+        equivalent_lvl:   Эквивалентный уровень звука А за операцию Leq (А)
+        character_noise:  Характер шума
+        header1:          Эквивалентные уровни звукового давления за операцию (дБ) в октавных полосах частот
+        header2:          Эквивалентные уровни звукового давления за рабочую смену (дБ) в октавных полосах частот
+        created_at:       Дата
+        frequency_31:     31.5 Гц
+        frequency_63:     63 Гц
+        frequency_125:    125 Гц
+        frequency_250:    250 Гц
+        frequency_500:    500 Гц
+        frequency_1000:   1000 Гц
+        frequency_2000:   2000 Гц
+        frequency_4000:   4000 Гц
+        frequency_8000:   8000 Гц
       staff_worker:
         full_name: Ф.И.О.
         name:   Имя

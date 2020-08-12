@@ -1,0 +1,72 @@
+= simple_form_for @noise_indicator, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :terms
+        =f.input :staff_worker_id, as: :hidden, input_html: {value: params[:worker_id]}
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :min_lvl
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :max_lvl
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :pulse_noise
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :peak_lvl
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :equivalent_lvl
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :character_noise
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_31
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_63
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_125
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_250
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_500
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_1000
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_2000
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_4000
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :frequency_8000
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", NoiseIndicator,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

@@ -1,0 +1,19 @@
+%h1 Listing noise_indicators
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @noise_indicators.each do |noise_indicator|
+      %tr
+        %td= link_to 'Show', noise_indicator
+        %td= link_to 'Edit', edit_noise_indicator_path(noise_indicator)
+        %td= link_to 'Destroy', noise_indicator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Noise indicator', new_noise_indicator_path
