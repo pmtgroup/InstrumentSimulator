@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :boost_vibro_indicators
+  resources :total_vibration_indicators
   resources :noise_indicators
   resources :staff_workers
   resources :sensors

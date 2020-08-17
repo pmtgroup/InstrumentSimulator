@@ -1,0 +1,145 @@
+.page-header
+  %h3= "Работник - #{@total_vibration_indicator.staff_worker.full_name} "
+  %h3= "ID - #{@total_vibration_indicator.staff_worker.id}"
+.col-md-6.col-md-offset-3
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= "Результаты контроля показателей общей вибрации"
+          %th= "Показатели"
+      %tbody
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :terms
+          %td= @total_vibration_indicator.terms
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_x
+          %td= @total_vibration_indicator.boost_level_x
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_y
+          %td= @total_vibration_indicator.boost_level_y
+
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_z
+          %td= @total_vibration_indicator.boost_level_z
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси X:"
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_1
+          %td= @x_values.frequency_1
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_2
+          %td= @x_values.frequency_2
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_4
+          %td= @x_values.frequency_4
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_8
+          %td= @x_values.frequency_8
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_16
+          %td= @x_values.frequency_16
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_31
+          %td= @x_values.frequency_31
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_63
+          %td= @x_values.frequency_63
+
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси Y:"
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_1
+          %td= @y_values.frequency_1
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_2
+          %td= @y_values.frequency_2
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_4
+          %td= @y_values.frequency_4
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_8
+          %td= @y_values.frequency_8
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_16
+          %td= @y_values.frequency_16
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_31
+          %td= @y_values.frequency_31
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_63
+          %td= @y_values.frequency_63
+
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси Z:"
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_1
+          %td= @z_values.frequency_1
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_2
+          %td= @z_values.frequency_2
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_4
+          %td= @z_values.frequency_4
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_8
+          %td= @z_values.frequency_8
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_16
+          %td= @z_values.frequency_16
+
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_31
+          %td= @z_values.frequency_31
+        %tr
+          %td= BoostVibroIndicator.human_attribute_name :frequency_63
+          %td= @z_values.frequency_63
+
+
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :peak_lvl
+        -#   %td= @total_vibration_indicator.peak_lvl
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :equivalent_lvl
+        -#   %td= @total_vibration_indicator.equivalent_lvl
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :character_noise
+        -#   %td= @total_vibration_indicator.character_noise
+
+        -#
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_31
+        -#   %td= @total_vibration_indicator.frequency_31
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_63
+        -#   %td= @total_vibration_indicator.frequency_63
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_125
+        -#   %td= @total_vibration_indicator.frequency_125
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_250
+        -#   %td= @total_vibration_indicator.frequency_250
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_500
+        -#   %td= @total_vibration_indicator.frequency_500
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_1000
+        -#   %td= @total_vibration_indicator.frequency_1000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_2000
+        -#   %td= @total_vibration_indicator.frequency_2000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_4000
+        -#   %td= @total_vibration_indicator.frequency_4000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_8000
+        -#   %td= @total_vibration_indicator.frequency_8000
+  .text-center
+    %br/
+    %br/
+    = link_to 'На страницу работника', staff_worker_path(@total_vibration_indicator.staff_worker), class: 'btn btn-primary btn-sm'

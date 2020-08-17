@@ -144,6 +144,21 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      total_vibration_indicator:
+        terms:           Условия измерения
+        boost_level_x:   Эквивалентный корректированный уровень виброускорения за смену по оси X Wd, (дБ)
+        boost_level_y:   Эквивалентный корректированный уровень виброускорения за смену по оси Y Wd, (дБ)
+        boost_level_z:   Эквивалентный корректированный уровень виброускорения за смену по оси Z Wk, (дБ)
+        staff_worker:    Работник
+      boost_vibro_indicator:
+        created_at:       Дата
+        frequency_1:      1 Гц
+        frequency_2:      2 Гц
+        frequency_4:      4 Гц
+        frequency_8:      8 Гц
+        frequency_16:     16 Гц
+        frequency_31:     '31.5 Гц'
+        frequency_63:     '63 Гц'
       noise_indicator:
         terms:            Условия измерения
         noise_level:      Эквивалентный уровень звука А за рабочую смену Leq (А)

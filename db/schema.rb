@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200812133800) do
+ActiveRecord::Schema.define(version: 20200817102447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boost_vibro_indicators", force: :cascade do |t|
+    t.float    "frequency_1"
+    t.float    "frequency_2"
+    t.float    "frequency_4"
+    t.float    "frequency_8"
+    t.float    "frequency_16"
+    t.float    "frequency_31"
+    t.float    "frequency_63"
+    t.integer  "type_axis"
+    t.integer  "total_vibration_indicator_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "boost_vibro_indicators", ["total_vibration_indicator_id"], name: "index_boost_vibro_indicators_on_total_vibration_indicator_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -144,6 +160,18 @@ ActiveRecord::Schema.define(version: 20200812133800) do
 
   add_index "subdivisions", ["company_id"], name: "index_subdivisions_on_company_id", using: :btree
 
+  create_table "total_vibration_indicators", force: :cascade do |t|
+    t.string   "terms"
+    t.float    "boost_level_x"
+    t.float    "boost_level_y"
+    t.float    "boost_level_z"
+    t.integer  "staff_worker_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "total_vibration_indicators", ["staff_worker_id"], name: "index_total_vibration_indicators_on_staff_worker_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -180,6 +208,7 @@ ActiveRecord::Schema.define(version: 20200812133800) do
 
   add_index "workpoints", ["workplace_id"], name: "index_workpoints_on_workplace_id", using: :btree
 
+  add_foreign_key "boost_vibro_indicators", "total_vibration_indicators"
   add_foreign_key "control_tools", "workpoints"
   add_foreign_key "measurement_gauges", "control_tools"
   add_foreign_key "noise_indicators", "staff_workers"
@@ -188,6 +217,7 @@ ActiveRecord::Schema.define(version: 20200812133800) do
   add_foreign_key "staff_workers", "subdivisions"
   add_foreign_key "staff_workers", "workplaces"
   add_foreign_key "subdivisions", "companies"
+  add_foreign_key "total_vibration_indicators", "staff_workers"
   add_foreign_key "workplaces", "subdivisions"
   add_foreign_key "workpoints", "workplaces"
 end
