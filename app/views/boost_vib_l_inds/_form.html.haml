@@ -1,0 +1,10 @@
+= form_for @boost_vib_l_ind do |f|
+  - if @boost_vib_l_ind.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@boost_vib_l_ind.errors.count, "error")} prohibited this boost_vib_l_ind from being saved:"
+      %ul
+        - @boost_vib_l_ind.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

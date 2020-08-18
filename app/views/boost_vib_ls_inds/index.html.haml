@@ -1,0 +1,19 @@
+%h1 Listing boost_vib_ls_inds
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @boost_vib_ls_inds.each do |boost_vib_ls_ind|
+      %tr
+        %td= link_to 'Show', boost_vib_ls_ind
+        %td= link_to 'Edit', edit_boost_vib_ls_ind_path(boost_vib_ls_ind)
+        %td= link_to 'Destroy', boost_vib_ls_ind, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Boost vib ls ind', new_boost_vib_ls_ind_path

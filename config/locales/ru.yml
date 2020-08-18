@@ -144,6 +144,21 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      local_vib_f_indicator:
+        terms:           Условия измерения
+        boost_level_x:   Эквивалентный корректированный уровень виброускорения за смену по оси X Wh, (дБ)
+        boost_level_y:   Эквивалентный корректированный уровень виброускорения за смену по оси Y Wh, (дБ)
+        boost_level_z:   Эквивалентный корректированный уровень виброускорения за смену по оси Z Wh, (дБ)
+        staff_worker:    Работник
+      boost_vib_l_ind:
+        frequency_8:   8 Дб
+        frequency_16:  16 Дб
+        frequency_31:  '31.5 Дб'
+        frequency_63:   63 Дб
+        frequency_125:  125 Дб
+        frequency_250:  250 Дб
+        frequency_500:  500 Дб
+        frequency_1000: 1000 Дб
       total_vibration_indicator:
         terms:           Условия измерения
         boost_level_x:   Эквивалентный корректированный уровень виброускорения за смену по оси X Wd, (дБ)
@@ -152,13 +167,13 @@ ru:
         staff_worker:    Работник
       boost_vibro_indicator:
         created_at:       Дата
-        frequency_1:      1 Гц
-        frequency_2:      2 Гц
-        frequency_4:      4 Гц
-        frequency_8:      8 Гц
-        frequency_16:     16 Гц
-        frequency_31:     '31.5 Гц'
-        frequency_63:     '63 Гц'
+        frequency_1:      1 Дб
+        frequency_2:      2 Дб
+        frequency_4:      4 Дб
+        frequency_8:      8 Дб
+        frequency_16:     16 Дб
+        frequency_31:     '31.5 Дб'
+        frequency_63:     '63 Дб'
       noise_indicator:
         terms:            Условия измерения
         noise_level:      Эквивалентный уровень звука А за рабочую смену Leq (А)

@@ -65,5 +65,8 @@
   %br/
 
   .form-actions
-    = link_to "Назад", StaffWorker,  class: 'btn btn-primary'
+    - if params[:id].present?
+      = link_to "Назад", staff_worker_path,  class: 'btn btn-primary'
+    - else
+      = link_to "Назад", StaffWorker,  class: 'btn btn-primary'
     = f.submit 'Сохранить', class: 'btn btn-primary'

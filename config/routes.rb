@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :boost_vib_ls_inds
+  resources :local_vib_s_indicators
+  resources :boost_vib_l_inds
+  resources :local_vib_f_indicators
   resources :boost_vibro_indicators
   resources :total_vibration_indicators
   resources :noise_indicators

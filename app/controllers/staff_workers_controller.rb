@@ -12,6 +12,8 @@ class StaffWorkersController < ApplicationController
   def show
     @noise_indicators = NoiseIndicator.where(staff_worker_id: @staff_worker.id)
     @total_vibration_indicators = TotalVibrationIndicator.where(staff_worker_id: @staff_worker.id)
+    @local_vib_f_indicators =  LocalVibFIndicator.where(staff_worker_id: @staff_worker.id)
+    @local_vib_s_indicators =  LocalVibSIndicator.where(staff_worker_id: @staff_worker.id)
   end
 
   # GET /staff_workers/new

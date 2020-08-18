@@ -1,0 +1,2 @@
+module LocalVibFIndicatorsHelper
+end

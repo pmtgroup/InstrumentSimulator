@@ -11,10 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200817102447) do
+ActiveRecord::Schema.define(version: 20200818104327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boost_vib_l_inds", force: :cascade do |t|
+    t.float    "frequency_8"
+    t.float    "frequency_16"
+    t.float    "frequency_31"
+    t.float    "frequency_63"
+    t.float    "frequency_125"
+    t.float    "frequency_250"
+    t.float    "frequency_500"
+    t.float    "frequency_1000"
+    t.integer  "type_axis"
+    t.integer  "local_vib_f_indicator_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "boost_vib_l_inds", ["local_vib_f_indicator_id"], name: "index_boost_vib_l_inds_on_local_vib_f_indicator_id", using: :btree
+
+  create_table "boost_vib_ls_inds", force: :cascade do |t|
+    t.float    "frequency_8"
+    t.float    "frequency_16"
+    t.float    "frequency_31"
+    t.float    "frequency_63"
+    t.float    "frequency_125"
+    t.float    "frequency_250"
+    t.float    "frequency_500"
+    t.float    "frequency_1000"
+    t.integer  "type_axis"
+    t.integer  "local_vib_s_indicator_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "boost_vib_ls_inds", ["local_vib_s_indicator_id"], name: "index_boost_vib_ls_inds_on_local_vib_s_indicator_id", using: :btree
 
   create_table "boost_vibro_indicators", force: :cascade do |t|
     t.float    "frequency_1"
@@ -50,6 +84,30 @@ ActiveRecord::Schema.define(version: 20200817102447) do
   end
 
   add_index "control_tools", ["workpoint_id"], name: "index_control_tools_on_workpoint_id", using: :btree
+
+  create_table "local_vib_f_indicators", force: :cascade do |t|
+    t.string   "terms"
+    t.float    "boost_level_x"
+    t.float    "boost_level_y"
+    t.float    "boost_level_z"
+    t.integer  "staff_worker_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "local_vib_f_indicators", ["staff_worker_id"], name: "index_local_vib_f_indicators_on_staff_worker_id", using: :btree
+
+  create_table "local_vib_s_indicators", force: :cascade do |t|
+    t.string   "terms"
+    t.float    "boost_level_x"
+    t.float    "boost_level_y"
+    t.float    "boost_level_z"
+    t.integer  "staff_worker_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "local_vib_s_indicators", ["staff_worker_id"], name: "index_local_vib_s_indicators_on_staff_worker_id", using: :btree
 
   create_table "measurement_gauges", force: :cascade do |t|
     t.integer  "number_guage"
@@ -208,8 +266,12 @@ ActiveRecord::Schema.define(version: 20200817102447) do
 
   add_index "workpoints", ["workplace_id"], name: "index_workpoints_on_workplace_id", using: :btree
 
+  add_foreign_key "boost_vib_l_inds", "local_vib_f_indicators"
+  add_foreign_key "boost_vib_ls_inds", "local_vib_s_indicators"
   add_foreign_key "boost_vibro_indicators", "total_vibration_indicators"
   add_foreign_key "control_tools", "workpoints"
+  add_foreign_key "local_vib_f_indicators", "staff_workers"
+  add_foreign_key "local_vib_s_indicators", "staff_workers"
   add_foreign_key "measurement_gauges", "control_tools"
   add_foreign_key "noise_indicators", "staff_workers"
   add_foreign_key "register_signals", "control_tools"

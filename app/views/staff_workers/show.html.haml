@@ -11,6 +11,12 @@
   = link_to new_total_vibration_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
     = fa_icon :plus
     = "Добавить показатели общей вибрации"
+  = link_to new_local_vib_f_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
+    = fa_icon :plus
+    = "Добавить показатели локальной вибрации от источника 1"
+  = link_to new_local_vib_s_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
+    = fa_icon :plus
+    = "Добавить показатели локальной вибрации от источника 2"
 %br/
 %br/
 .col-md-6.col-md-offset-3
@@ -116,6 +122,52 @@
             %td= total_vibration_indicator.terms
             %td
               = link_to total_vibration_indicator, class: 'btn btn-success' do
+                = fa_icon :eye
+
+.col-md-3.col-md-offset-1
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{ colspan: 3 }= "Показатели локальной вибрации от источника 1"
+      %thead
+        %tr
+          %th= "ID"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+
+      %tbody
+        - @local_vib_f_indicators.each do |local_vib_f_indicator|
+          %tr
+            %td= local_vib_f_indicator.id
+            %td= "#{l local_vib_f_indicator.created_at.to_date, format: :long} #{local_vib_f_indicator.created_at.to_s.split(' ')[1]}"
+            %td= local_vib_f_indicator.terms
+            %td
+              = link_to local_vib_f_indicator, class: 'btn btn-success' do
+                = fa_icon :eye
+
+.col-md-3.col-md-offset-1
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{ colspan: 3 }= "Показатели локальной вибрации от источника 2"
+      %thead
+        %tr
+          %th= "ID"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+
+      %tbody
+        - @local_vib_s_indicators.each do |local_vib_s_indicator|
+          %tr
+            %td= local_vib_s_indicator.id
+            %td= "#{l local_vib_s_indicator.created_at.to_date, format: :long} #{local_vib_s_indicator.created_at.to_s.split(' ')[1]}"
+            %td= local_vib_s_indicator.terms
+            %td
+              = link_to local_vib_s_indicator, class: 'btn btn-success' do
                 = fa_icon :eye
       -# %thead
       -#   %tr
