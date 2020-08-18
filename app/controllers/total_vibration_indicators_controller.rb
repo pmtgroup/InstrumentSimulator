@@ -33,7 +33,8 @@ class TotalVibrationIndicatorsController < ApplicationController
                                     boost_level_x: params[:boost_level_x],
                                     boost_level_y: params[:boost_level_y],
                                     boost_level_z: params[:boost_level_z],
-                                    staff_worker_id: params[:staff_worker_id])
+                                    staff_worker_id: params[:staff_worker_id],
+                                    working_operation_id: params[:working_operation_id])
     @total.save!
     @x_values = BoostVibroIndicator.create!(frequency_1: params[:values_x][:frequency_1_x],
                                             frequency_2: params[:values_x][:frequency_2_x],
@@ -124,7 +125,8 @@ class TotalVibrationIndicatorsController < ApplicationController
                                                         :boost_level_x,
                                                         :boost_level_y,
                                                         :boost_level_z,
-                                                        :staff_worker_id)
+                                                        :staff_worker_id,
+                                                        :working_operation_id)
     end
 
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :working_operations
   resources :boost_vib_ls_inds
   resources :local_vib_s_indicators
   resources :boost_vib_l_inds
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   resources :workplaces
   resources :subdivisions
   resources :companies
-  root 'people#index'
+  root 'staff_workers#index'
 
 
   resources :people do

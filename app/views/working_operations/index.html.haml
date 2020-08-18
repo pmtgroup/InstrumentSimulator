@@ -1,0 +1,25 @@
+%h1 Listing working_operations
+
+%table
+  %thead
+    %tr
+      %th Staf worker
+      %th Date of operation
+      %th Duration shift
+      %th
+      %th
+      %th
+
+  %tbody
+    - @working_operations.each do |working_operation|
+      %tr
+        %td= working_operation.staf_worker
+        %td= working_operation.date_of_operation
+        %td= working_operation.duration_shift
+        %td= link_to 'Show', working_operation
+        %td= link_to 'Edit', edit_working_operation_path(working_operation)
+        %td= link_to 'Destroy', working_operation, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Working operation', new_working_operation_path

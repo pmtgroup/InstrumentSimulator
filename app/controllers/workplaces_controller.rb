@@ -28,7 +28,7 @@ class WorkplacesController < ApplicationController
 
     respond_to do |format|
       if @workplace.save
-        format.html { redirect_to @workplace, notice: 'Workplace was successfully created.' }
+        format.html { redirect_to @workplace, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @workplace }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WorkplacesController < ApplicationController
   def update
     respond_to do |format|
       if @workplace.update(workplace_params)
-        format.html { redirect_to @workplace, notice: 'Workplace was successfully updated.' }
+        format.html { redirect_to @workplace, notice: 'Данные сохранены' }
         format.json { render :show, status: :ok, location: @workplace }
       else
         format.html { render :edit }

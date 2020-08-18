@@ -28,7 +28,7 @@ class SubdivisionsController < ApplicationController
 
     respond_to do |format|
       if @subdivision.save
-        format.html { redirect_to @subdivision, notice: 'Subdivision was successfully created.' }
+        format.html { redirect_to @subdivision, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @subdivision }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SubdivisionsController < ApplicationController
   def update
     respond_to do |format|
       if @subdivision.update(subdivision_params)
-        format.html { redirect_to @subdivision, notice: 'Subdivision was successfully updated.' }
+        format.html { redirect_to @subdivision, notice: 'Данные сохранены'}
         format.json { render :show, status: :ok, location: @subdivision }
       else
         format.html { render :edit }

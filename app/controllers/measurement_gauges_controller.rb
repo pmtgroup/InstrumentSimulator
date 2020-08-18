@@ -28,7 +28,7 @@ class MeasurementGaugesController < ApplicationController
 
     respond_to do |format|
       if @measurement_gauge.save
-        format.html { redirect_to @measurement_gauge, notice: 'Measurement gauge was successfully created.' }
+        format.html { redirect_to @measurement_gauge, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @measurement_gauge }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MeasurementGaugesController < ApplicationController
   def update
     respond_to do |format|
       if @measurement_gauge.update(measurement_gauge_params)
-        format.html { redirect_to @measurement_gauge, notice: 'Measurement gauge was successfully updated.' }
+        format.html { redirect_to @measurement_gauge, notice: 'Данные сохранены' }
         format.json { render :show, status: :ok, location: @measurement_gauge }
       else
         format.html { render :edit }

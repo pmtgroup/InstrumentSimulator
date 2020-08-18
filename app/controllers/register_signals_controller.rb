@@ -28,7 +28,7 @@ class RegisterSignalsController < ApplicationController
 
     respond_to do |format|
       if @register_signal.save
-        format.html { redirect_to @register_signal, notice: 'Register signal was successfully created.' }
+        format.html { redirect_to @register_signal, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @register_signal }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RegisterSignalsController < ApplicationController
   def update
     respond_to do |format|
       if @register_signal.update(register_signal_params)
-        format.html { redirect_to @register_signal, notice: 'Register signal was successfully updated.' }
+        format.html { redirect_to @register_signal,notice: 'Данные сохранены' }
         format.json { render :show, status: :ok, location: @register_signal }
       else
         format.html { render :edit }

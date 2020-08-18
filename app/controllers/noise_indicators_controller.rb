@@ -28,7 +28,7 @@ class NoiseIndicatorsController < ApplicationController
 
     respond_to do |format|
       if @noise_indicator.save
-        format.html { redirect_to StaffWorker.find(@noise_indicator.staff_worker_id), notice: 'Noise indicator was successfully created.' }
+        format.html { redirect_to StaffWorker.find(@noise_indicator.staff_worker_id), notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @noise_indicator }
       else
         format.html { render :new }
@@ -85,7 +85,8 @@ class NoiseIndicatorsController < ApplicationController
                                       :peak_lvl,
                                       :equivalent_lvl,
                                       :character_noise,
-                                      :staff_worker_id
+                                      :staff_worker_id,
+                                      :working_operation_id
                                       )
     end
 end

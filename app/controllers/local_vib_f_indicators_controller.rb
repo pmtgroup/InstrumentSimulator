@@ -32,7 +32,8 @@ class LocalVibFIndicatorsController < ApplicationController
                                     boost_level_x: params[:boost_level_x],
                                     boost_level_y: params[:boost_level_y],
                                     boost_level_z: params[:boost_level_z],
-                                    staff_worker_id: params[:staff_worker_id])
+                                    staff_worker_id: params[:staff_worker_id],
+                                    working_operation_id: params[:working_operation_id])
     @local.save!
     @x_values = BoostVibLInd.create!(       frequency_8: params[:values_x][:frequency_8_x],
                                             frequency_16: params[:values_x][:frequency_16_x],
@@ -127,6 +128,7 @@ class LocalVibFIndicatorsController < ApplicationController
                                                     :boost_level_x,
                                                     :boost_level_y,
                                                     :boost_level_z,
-                                                    :staff_worker_id)
+                                                    :staff_worker_id,
+                                                    :working_operation_id)
     end
 end

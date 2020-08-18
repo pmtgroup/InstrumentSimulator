@@ -14,6 +14,7 @@ class StaffWorkersController < ApplicationController
     @total_vibration_indicators = TotalVibrationIndicator.where(staff_worker_id: @staff_worker.id)
     @local_vib_f_indicators =  LocalVibFIndicator.where(staff_worker_id: @staff_worker.id)
     @local_vib_s_indicators =  LocalVibSIndicator.where(staff_worker_id: @staff_worker.id)
+    @working_operations  = WorkingOperation.where(staff_worker_id: @staff_worker.id)
   end
 
   # GET /staff_workers/new
@@ -32,7 +33,7 @@ class StaffWorkersController < ApplicationController
 
     respond_to do |format|
       if @staff_worker.save
-        format.html { redirect_to @staff_worker, notice: 'Staff worker was successfully created.' }
+        format.html { redirect_to @staff_worker, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @staff_worker }
       else
         format.html { render :new }
@@ -46,7 +47,7 @@ class StaffWorkersController < ApplicationController
   def update
     respond_to do |format|
       if @staff_worker.update(staff_worker_params)
-        format.html { redirect_to @staff_worker, notice: 'Staff worker was successfully updated.' }
+        format.html { redirect_to @staff_worker, notice: 'Данные сохранены' }
         format.json { render :show, status: :ok, location: @staff_worker }
       else
         format.html { render :edit }

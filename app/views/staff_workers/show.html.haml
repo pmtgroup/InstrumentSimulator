@@ -4,22 +4,6 @@
 %br/
 %br/
 .col-md-6.col-md-offset-3
-  = link_to new_noise_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
-    = fa_icon :plus
-    = "Добавить показатели шума"
-
-  = link_to new_total_vibration_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
-    = fa_icon :plus
-    = "Добавить показатели общей вибрации"
-  = link_to new_local_vib_f_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
-    = fa_icon :plus
-    = "Добавить показатели локальной вибрации от источника 1"
-  = link_to new_local_vib_s_indicator_path(worker_id: params[:id]), class: 'btn btn-success btn-sm' do
-    = fa_icon :plus
-    = "Добавить показатели локальной вибрации от источника 2"
-%br/
-%br/
-.col-md-6.col-md-offset-3
   .row
     %table.table.table-striped
 
@@ -76,156 +60,104 @@
     = link_to 'Изменить', edit_staff_worker_path(@staff_worker), class: 'btn btn-primary btn-sm'
 %br/
 %br/
-%br/
-%br/
 
-.col-md-3.col-md-offset-1
+.col-md-10.col-md-offset-1
+  .text-center
+    %br/
+    %br/
+    %h3
+      = "Рабочие операции"
+      = link_to new_working_operation_path(worker_id: params[:id]), class: 'btn btn-success' do
+        = fa_icon :plus
+        = ""
   .row
     %table.table.table-hover
       %thead
         %tr
-          %th{ colspan: 3 }= "Показатели шума"
+          %th{ colspan: 3 }= "Операции"
+          %th{ colspan: 4 }= "Показатели шума"
+          %th{ colspan: 4 }= "Показатели общей вибрации"
+          %th{ colspan: 4 }= "Показатели локальной вибрации от источника 1"
+          %th{ colspan: 4 }= "Показатели локальной вибрации от источника 2"
       %thead
         %tr
-          %th= "ID"
+          %th= "ID операции"
+          %th= "Дата операции"
+          %th
+          %th= "ID операции"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+          %th= "ID операции"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+          %th= "ID операции"
+          %th= "Дата внесения данных"
+          %th= NoiseIndicator.human_attribute_name :terms
+          %th
+          %th= "ID операции"
           %th= "Дата внесения данных"
           %th= NoiseIndicator.human_attribute_name :terms
           %th
 
       %tbody
-        - @noise_indicators.each do |noise_indicator|
+        - @working_operations.each do |working_operation|
           %tr
-            %td= noise_indicator.id
-            %td= "#{l noise_indicator.created_at.to_date, format: :long} #{noise_indicator.created_at.to_s.split(' ')[1]}"
-            %td= noise_indicator.terms
+            %td= working_operation.id
+            %td= "#{l working_operation.date_of_operation.to_date, format: :default}"
             %td
-              = link_to noise_indicator, class: 'btn btn-success' do
+              = link_to working_operation_path(working_operation), class: 'btn btn-success' do
                 = fa_icon :eye
-.col-md-3.col-md-offset-1
-  .row
-    %table.table.table-hover
-      %thead
-        %tr
-          %th{ colspan: 3 }= "Показатели общей вибрации"
-      %thead
-        %tr
-          %th= "ID"
-          %th= "Дата внесения данных"
-          %th= NoiseIndicator.human_attribute_name :terms
-          %th
-
-      %tbody
-        - @total_vibration_indicators.each do |total_vibration_indicator|
-          %tr
-            %td= total_vibration_indicator.id
-            %td= "#{l total_vibration_indicator.created_at.to_date, format: :long} #{total_vibration_indicator.created_at.to_s.split(' ')[1]}"
-            %td= total_vibration_indicator.terms
-            %td
-              = link_to total_vibration_indicator, class: 'btn btn-success' do
-                = fa_icon :eye
-
-.col-md-3.col-md-offset-1
-  .row
-    %table.table.table-hover
-      %thead
-        %tr
-          %th{ colspan: 3 }= "Показатели локальной вибрации от источника 1"
-      %thead
-        %tr
-          %th= "ID"
-          %th= "Дата внесения данных"
-          %th= NoiseIndicator.human_attribute_name :terms
-          %th
-
-      %tbody
-        - @local_vib_f_indicators.each do |local_vib_f_indicator|
-          %tr
-            %td= local_vib_f_indicator.id
-            %td= "#{l local_vib_f_indicator.created_at.to_date, format: :long} #{local_vib_f_indicator.created_at.to_s.split(' ')[1]}"
-            %td= local_vib_f_indicator.terms
-            %td
-              = link_to local_vib_f_indicator, class: 'btn btn-success' do
-                = fa_icon :eye
-
-.col-md-3.col-md-offset-1
-  .row
-    %table.table.table-hover
-      %thead
-        %tr
-          %th{ colspan: 3 }= "Показатели локальной вибрации от источника 2"
-      %thead
-        %tr
-          %th= "ID"
-          %th= "Дата внесения данных"
-          %th= NoiseIndicator.human_attribute_name :terms
-          %th
-
-      %tbody
-        - @local_vib_s_indicators.each do |local_vib_s_indicator|
-          %tr
-            %td= local_vib_s_indicator.id
-            %td= "#{l local_vib_s_indicator.created_at.to_date, format: :long} #{local_vib_s_indicator.created_at.to_s.split(' ')[1]}"
-            %td= local_vib_s_indicator.terms
-            %td
-              = link_to local_vib_s_indicator, class: 'btn btn-success' do
-                = fa_icon :eye
-      -# %thead
-      -#   %tr
-      -#     %th{ colspan: 2 }= "Шум"
-      -# %thead
-      -#   %tr
-      -#     %th= "Результаты расчёта эквивалентных уровней за рабочую смену"
-      -#     %th= "Показатели"
-      -# %tbody
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :terms
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :min_lvl
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :max_lvl
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :pulse_noise
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :peak_lvl
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :equivalent_lvl
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :character_noise
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td{ colspan: 2 }= "Эквивалентные уровни звукового давления за смену (дБ) в октавных полосах частот (Гц):"
-      -#
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_31
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_63
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_125
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_250
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_500
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_1000
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_2000
-      -#     %td= @staff_worker.subdivision.name
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_4000
-      -#     %td= @staff_worker.surname + " " + @staff_worker.name + " " +  @staff_worker.patronymic
-      -#   %tr
-      -#     %td= NoiseIndicator.human_attribute_name :frequency_8000
-      -#     %td= @staff_worker.subdivision.name
+            - if working_operation.noise_indicators.present?
+              - working_operation.noise_indicators.each do |ni|
+                %td= ni.id
+                %td= "#{l ni.created_at.to_date, format: :default}"
+                %td= ni.terms
+                %td
+                  = link_to ni, class: 'btn btn-success' do
+                    = fa_icon :eye
+            - else
+              %td.text-center{ colspan: 4 }
+                = link_to new_noise_indicator_path(worker_id: params[:id], operation_id: working_operation.id), class: 'btn btn-default' do
+                  = fa_icon :plus
+                  = "Добавить показатели шума"
+            - if working_operation.total_vibration_indicators.present?
+              - working_operation.total_vibration_indicators.each do |ni|
+                %td= ni.id
+                %td= "#{l ni.created_at.to_date, format: :default}"
+                %td= ni.terms
+                %td
+                  = link_to ni, class: 'btn btn-success' do
+                    = fa_icon :eye
+            - else
+              %td.text-center{ colspan: 4 }
+                = link_to new_total_vibration_indicator_path(worker_id: params[:id], operation_id: working_operation.id), class: 'btn btn-default' do
+                  = fa_icon :plus
+                  = "Добавить показатели общей вибрации"
+            - if working_operation.local_vib_f_indicators.present?
+              - working_operation.local_vib_f_indicators.each do |ni|
+                %td= ni.id
+                %td= "#{l ni.created_at.to_date, format: :default}"
+                %td= ni.terms
+                %td
+                  = link_to ni, class: 'btn btn-success' do
+                    = fa_icon :eye
+            - else
+              %td.text-center{ colspan: 4 }
+                = link_to new_local_vib_f_indicator_path(worker_id: params[:id], operation_id: working_operation.id), class: 'btn btn-default' do
+                  = fa_icon :plus
+                  = "Добавить показатели локальной вибрации ИСТ1"
+            - if working_operation.local_vib_s_indicators.present?
+              - working_operation.local_vib_s_indicators.each do |ni|
+                %td= ni.id
+                %td= "#{l ni.created_at.to_date, format: :default}"
+                %td= ni.terms
+                %td
+                  = link_to ni, class: 'btn btn-success' do
+                    = fa_icon :eye
+            - else
+              %td.text-center{ colspan: 4 }
+                = link_to new_local_vib_s_indicator_path(worker_id: params[:id], operation_id: working_operation.id), class: 'btn btn-default' do
+                  = fa_icon :plus
+                  = "Добавить показатели локальной вибрации ИСТ2"

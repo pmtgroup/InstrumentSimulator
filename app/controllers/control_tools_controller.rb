@@ -28,7 +28,7 @@ class ControlToolsController < ApplicationController
 
     respond_to do |format|
       if @control_tool.save
-        format.html { redirect_to @control_tool, notice: 'Control tool was successfully created.' }
+        format.html { redirect_to @control_tool, notice: 'Данные сохранены' }
         format.json { render :show, status: :created, location: @control_tool }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ControlToolsController < ApplicationController
   def update
     respond_to do |format|
       if @control_tool.update(control_tool_params)
-        format.html { redirect_to @control_tool, notice: 'Control tool was successfully updated.' }
+        format.html { redirect_to @control_tool, notice: 'Данные сохранены' }
         format.json { render :show, status: :ok, location: @control_tool }
       else
         format.html { render :edit }

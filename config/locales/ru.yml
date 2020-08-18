@@ -144,6 +144,10 @@ ru:
       rc4_program: Шифрование RC4
       quick_pow: Алгоритм быстрого возведения в степень в кольце классов вычетов
     attributes:
+      working_operation:
+        date_of_operation: Дата операции
+        staff_worker_id: Работник
+        duration_shift: Продолжительность рабочей смены
       local_vib_f_indicator:
         terms:           Условия измерения
         boost_level_x:   Эквивалентный корректированный уровень виброускорения за смену по оси X Wh, (дБ)

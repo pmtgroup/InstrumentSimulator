@@ -5,6 +5,7 @@
         .form-group
           =f.input :terms, label: "Условия измерения"
           =f.input :staff_worker_id, as: :hidden, input_html: {value: params[:worker_id]}
+          =f.input :working_operation_id, as: :hidden, input_html: {value: params[:operation_id]}
     .row.col-md-offset-3
       .col-md-8
         .form-group
