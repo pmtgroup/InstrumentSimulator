@@ -1,0 +1,68 @@
+= simple_form_for '', method: :get, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form2' } do |form|
+  = form.simple_fields_for :vibrations do |f|
+    .row.col-md-offset-3
+      .col-md-8
+        .form-group
+          =f.input :terms, label: "Условия измерения"
+          =f.input :staff_worker_id, as: :hidden, input_html: {value: params[:worker_id]}
+          =f.input :working_operation_id, as: :hidden, input_html: {value: params[:operation_id]}
+    .row.col-md-offset-3
+      .col-md-8
+        .form-group
+          =f.input :boost_level_x, label: "Эквивалентный корректированный уровень виброускорения за смену по оси X Wk, (дБ)"
+    .row.col-md-offset-3
+      .col-md-8
+        .form-group
+          =f.input :boost_level_y, label: "Эквивалентный корректированный уровень виброускорения за смену по оси Y Wk, (дБ)"
+    .row.col-md-offset-3
+      .col-md-8
+        .form-group
+          =f.input :boost_level_z, label: "Эквивалентный корректированный уровень виброускорения за смену по оси Z Wk, (дБ)"
+    = f.simple_fields_for :values_x do |x|
+      .row.col-md-offset-3
+        .col-md-8
+          .form-group
+            %h4= "По оси Х"
+            = x.input :type_axis_x, as: :hidden, input_html: {value: 1}
+            = x.input  :frequency_1_x, label: "1 дб"
+            = x.input  :frequency_2_x, label: "2 дб"
+            = x.input  :frequency_4_x, label: "4 дб"
+            = x.input :frequency_8_x, label: "8 дб"
+            = x.input :frequency_16_x, label: "16 дб"
+            = x.input  :frequency_31_x, label: "31,5 дб"
+            = x.input  :frequency_63_x, label: "63 дб"
+    = f.simple_fields_for :values_y do |y|
+      .row.col-md-offset-3
+        .col-md-8
+          .form-group
+            %h4= "По оси Y"
+            = y.input :type_axis_y, as: :hidden, input_html: {value: 2}
+            = y.input  :frequency_1_y, label: "1 дб"
+            = y.input  :frequency_2_y, label: "2 дб"
+            = y.input  :frequency_4_y, label: "4 дб"
+            = y.input :frequency_8_y, label: "8 дб"
+            = y.input :frequency_16_y, label: "16 дб"
+            = y.input  :frequency_31_y, label: "31,5 дб"
+            = y.input  :frequency_63_y, label: "63 дб"
+    = f.simple_fields_for :values_z do |z|
+      .row.col-md-offset-3
+        .col-md-8
+          .form-group
+            %h4= "По оси Z"
+            = z.input :type_axis_z, as: :hidden, input_html: {value: 3}
+            = z.input  :frequency_1_z, label: "1 дб"
+            = z.input  :frequency_2_z, label: "2 дб"
+            = z.input  :frequency_4_z, label: "4 дб"
+            = z.input :frequency_8_z, label: "8 дб"
+            = z.input :frequency_16_z, label: "16 дб"
+            = z.input  :frequency_31_z, label: "31,5 дб"
+            = z.input  :frequency_63_z, label: "63 дб"
+
+
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", staff_worker_path(params[:worker_id]),  class: 'btn btn-primary'
+    = form.submit 'Сохранить', class: 'btn btn-primary'

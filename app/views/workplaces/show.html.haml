@@ -1,0 +1,27 @@
+.page-header.text-center
+  %h1= t('headers.workplaces.show')
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= Workplace.human_attribute_name(:type_vpf)
+        %dd= @workplace.type_vpf
+      .col-md-2
+        %dt= Workplace.human_attribute_name(:shift_duration)
+        %dd= @workplace.shift_duration
+    .row
+      .col-md-2
+        %dt= Workplace.human_attribute_name(:number_of_shift)
+        %dd= @workplace.number_of_shift
+      .col-md-2
+        %dt= Workplace.human_attribute_name(:subdivision)
+        %dd= @workplace.subdivision.name
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику рабочих мест', workplaces_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_subdivision_path(@workplace), class: 'btn btn-primary btn-sm'

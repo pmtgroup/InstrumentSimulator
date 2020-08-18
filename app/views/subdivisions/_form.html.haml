@@ -1,0 +1,21 @@
+= simple_form_for @subdivision, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :name
+    .col-md-8
+      .form-group
+        = f.input :full_name
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.association :company
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", Subdivision,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

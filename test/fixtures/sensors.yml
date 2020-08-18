@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  control_tool_id: 
+  sensor_presence: 1
+  sensor_lv1: 1
+  sensor_lv2: 1
+  sensor_tivl: 1
+
+two:
+  control_tool_id: 
+  sensor_presence: 1
+  sensor_lv1: 1
+  sensor_lv2: 1
+  sensor_tivl: 1

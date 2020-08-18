@@ -1,0 +1,19 @@
+%h1 Listing local_vib_s_indicators
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @local_vib_s_indicators.each do |local_vib_s_indicator|
+      %tr
+        %td= link_to 'Show', local_vib_s_indicator
+        %td= link_to 'Edit', edit_local_vib_s_indicator_path(local_vib_s_indicator)
+        %td= link_to 'Destroy', local_vib_s_indicator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Local vib s indicator', new_local_vib_s_indicator_path

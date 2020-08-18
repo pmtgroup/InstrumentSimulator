@@ -1,0 +1,27 @@
+= simple_form_for @workpoint, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :name
+    .col-md-8
+      .form-group
+        = f.input :description
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :type_vpf, collection: ["Общая вибрация","Локальная вибрация","Шум и инфразвук"]
+    .col-md-8
+      .form-group
+        = f.input :description_file
+    .col-md-8
+      .form-group
+        = f.association :workplace, collection: Workplace.all.map{|x| [x.id, x.id]}
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", Workpoint,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

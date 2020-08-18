@@ -1,0 +1,36 @@
+.page-header.text-center
+  %h1= t('headers.workplaces.index')
+= link_to new_workplace_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = "Создать рабочее место"
+
+%br
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+    %th= Workplace.human_attribute_name :type_vpf
+    %th= Workplace.human_attribute_name :shift_duration
+    %th= Workplace.human_attribute_name :number_of_shift
+    %th= Workplace.human_attribute_name :subdivision
+    %th
+    %th
+    %th
+
+  %tbody
+    - @workplaces.each do |workplace|
+      %tr.tr-href{data: {link: workplace_path(workplace)}}
+        %td= workplace.type_vpf
+        %td= workplace.shift_duration
+        %td= workplace.number_of_shift
+        %td= workplace.subdivision.name
+        %td
+          = link_to workplace, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_workplace_path(workplace), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to workplace, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times

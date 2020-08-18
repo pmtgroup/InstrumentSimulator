@@ -1,0 +1,154 @@
+.page-header
+  %h3= "Работник - #{@local_vib_s_indicator.staff_worker.full_name} "
+  %h3= "ID - #{@local_vib_s_indicator.staff_worker.id}"
+.col-md-6.col-md-offset-3
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= "Результаты контроля показателей вибрации локальной от источника 1"
+          %th= "Показатели"
+      %tbody
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :terms
+          %td= @local_vib_s_indicator.terms
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_x
+          %td= @local_vib_s_indicator.boost_level_x
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_y
+          %td= @local_vib_s_indicator.boost_level_y
+
+        %tr
+          %td= TotalVibrationIndicator.human_attribute_name :boost_level_z
+          %td= @local_vib_s_indicator.boost_level_z
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси X:"
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_8
+          %td= @x_values.frequency_8
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_16
+          %td= @x_values.frequency_16
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_31
+          %td= @x_values.frequency_31
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_63
+          %td= @x_values.frequency_63
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_125
+          %td= @x_values.frequency_125
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_250
+          %td= @x_values.frequency_250
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_500
+          %td= @x_values.frequency_500
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_1000
+          %td= @x_values.frequency_1000
+
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси Y:"
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_8
+          %td= @y_values.frequency_8
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_16
+          %td= @y_values.frequency_16
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_31
+          %td= @y_values.frequency_31
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_63
+          %td= @y_values.frequency_63
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_125
+          %td= @y_values.frequency_125
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_250
+          %td= @y_values.frequency_250
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_500
+          %td= @y_values.frequency_500
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_1000
+          %td= @y_values.frequency_1000
+
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни виброускорения за смену (дБ) в октавных полосах частот (Гц) по оси Z:"
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_8
+          %td= @z_values.frequency_8
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_16
+          %td= @z_values.frequency_16
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_31
+          %td= @z_values.frequency_31
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_63
+          %td= @z_values.frequency_63
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_125
+          %td= @z_values.frequency_125
+
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_250
+          %td= @z_values.frequency_250
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_500
+          %td= @z_values.frequency_500
+        %tr
+          %td= BoostVibLInd.human_attribute_name :frequency_1000
+          %td= @z_values.frequency_1000
+
+
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :peak_lvl
+        -#   %td= @local_vib_s_indicator.peak_lvl
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :equivalent_lvl
+        -#   %td= @local_vib_s_indicator.equivalent_lvl
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :character_noise
+        -#   %td= @local_vib_s_indicator.character_noise
+
+        -#
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_31
+        -#   %td= @local_vib_s_indicator.frequency_31
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_63
+        -#   %td= @local_vib_s_indicator.frequency_63
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_125
+        -#   %td= @local_vib_s_indicator.frequency_125
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_250
+        -#   %td= @local_vib_s_indicator.frequency_250
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_500
+        -#   %td= @local_vib_s_indicator.frequency_500
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_1000
+        -#   %td= @local_vib_s_indicator.frequency_1000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_2000
+        -#   %td= @local_vib_s_indicator.frequency_2000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_4000
+        -#   %td= @local_vib_s_indicator.frequency_4000
+        -# %tr
+        -#   %td= TotalVibrationIndicator.human_attribute_name :frequency_8000
+        -#   %td= @local_vib_s_indicator.frequency_8000
+  .text-center
+    %br/
+    %br/
+    = link_to 'На страницу работника', staff_worker_path(@local_vib_s_indicator.staff_worker), class: 'btn btn-primary btn-sm'

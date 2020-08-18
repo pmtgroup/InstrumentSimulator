@@ -1,0 +1,17 @@
+= simple_form_for @working_operation, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = datepicker_field(f, :date_of_operation)
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        =f.input :duration_shift
+        =f.input :staff_worker_id, as: :hidden, input_html: {value: params[:worker_id]}
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", staff_worker_path(params[:worker_id]),  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

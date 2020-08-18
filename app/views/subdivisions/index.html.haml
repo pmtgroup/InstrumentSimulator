@@ -1,0 +1,34 @@
+.page-header.text-center
+  %h1= t('headers.subdivisions.index')
+= link_to new_subdivision_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = "Создать предприятие"
+
+%br
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+    %th= Subdivision.human_attribute_name :name
+    %th= Subdivision.human_attribute_name :full_name
+    %th= Subdivision.human_attribute_name :company
+    %th
+    %th
+    %th
+
+  %tbody
+    - @subdivisions.each do |subdivision|
+      %tr.tr-href{data: {link: subdivision_path(subdivision)}}
+        %td= subdivision.name
+        %td= subdivision.full_name
+        %td= subdivision.company.name
+        %td
+          = link_to subdivision, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_subdivision_path(subdivision), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to subdivision, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times

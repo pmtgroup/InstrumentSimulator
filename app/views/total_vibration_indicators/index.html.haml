@@ -1,0 +1,19 @@
+%h1 Listing total_vibration_indicators
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @total_vibration_indicators.each do |total_vibration_indicator|
+      %tr
+        %td= link_to 'Show', total_vibration_indicator
+        %td= link_to 'Edit', edit_total_vibration_indicator_path(total_vibration_indicator)
+        %td= link_to 'Destroy', total_vibration_indicator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Total vibration indicator', new_total_vibration_indicator_path

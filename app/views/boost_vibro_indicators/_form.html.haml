@@ -1,0 +1,10 @@
+= form_for @boost_vibro_indicator do |f|
+  - if @boost_vibro_indicator.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@boost_vibro_indicator.errors.count, "error")} prohibited this boost_vibro_indicator from being saved:"
+      %ul
+        - @boost_vibro_indicator.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

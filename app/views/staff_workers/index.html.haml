@@ -1,0 +1,43 @@
+.page-header.text-center
+  %h1= t('headers.staff_workers.index')
+= link_to new_staff_worker_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = "Добавить работника"
+
+%br
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+    %th= StaffWorker.human_attribute_name :full_name
+    %th= StaffWorker.human_attribute_name :subdivision
+    %th= StaffWorker.human_attribute_name :birthday
+    %th= StaffWorker.human_attribute_name :position
+    %th= StaffWorker.human_attribute_name :duration_work
+    %th= StaffWorker.human_attribute_name :labor_activity_type
+    %th= StaffWorker.human_attribute_name :labor_activity_category
+    %th
+    %th
+    %th
+
+  %tbody
+    - @staff_workers.each do |staff_worker|
+      %tr
+        %td= staff_worker.surname + " " +  staff_worker.name + " " +   staff_worker.patronymic
+        %td= staff_worker.subdivision.name
+        %td= l staff_worker.birthday, format: :default
+        %td= staff_worker.position
+        %td= l staff_worker.duration_work, format: :default
+        %td= staff_worker.labor_activity_type
+        %td= staff_worker.labor_activity_category
+
+        %td
+          = link_to staff_worker, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_staff_worker_path(staff_worker), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to staff_worker, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times

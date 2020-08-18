@@ -1,0 +1,44 @@
+.page-header.text-center
+  %h1= t('headers.measurement_gauges.index')
+= link_to new_measurement_gauge_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = "Создать датчик измерения"
+
+%br
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+    %th= MeasurementGauge.human_attribute_name :number_guage
+    %th= MeasurementGauge.human_attribute_name :control_tool
+    %th= MeasurementGauge.human_attribute_name :number_vibration_sensor
+    %th= MeasurementGauge.human_attribute_name :number_local_vibration_sensor1
+    %th= MeasurementGauge.human_attribute_name :number_local_vibration_sensor2
+    %th= MeasurementGauge.human_attribute_name :number_noise_sensor
+    %th= MeasurementGauge.human_attribute_name :number_infrasound_sensor
+    %th
+    %th
+    %th
+
+  %tbody
+    - @measurement_gauges.each do |measurement_gauge|
+      %tr
+        %td= measurement_gauge.id
+        %td= measurement_gauge.control_tool.id
+        %td= measurement_gauge.number_vibration_sensor
+        %td= measurement_gauge.number_local_vibration_sensor1
+        %td= measurement_gauge.number_local_vibration_sensor2
+        %td= measurement_gauge.number_noise_sensor
+        %td= measurement_gauge.number_infrasound_sensor
+        %td
+          = link_to measurement_gauge, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_measurement_gauge_path(measurement_gauge), class: 'btn btn-info' do
+            = fa_icon :edit
+        %td
+          = link_to measurement_gauge, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :times
+
+%br

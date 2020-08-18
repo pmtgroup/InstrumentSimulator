@@ -1,0 +1,1 @@
+json.partial! "total_vibration_indicators/total_vibration_indicator", total_vibration_indicator: @total_vibration_indicator

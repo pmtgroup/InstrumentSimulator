@@ -1,0 +1,2 @@
+module BoostVibLsIndsHelper
+end

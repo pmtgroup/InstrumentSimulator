@@ -1,0 +1,36 @@
+.page-header
+  %h1= "#{@measurement_gauge.id}"
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= MeasurementGauge.human_attribute_name :number_vibration_sensor
+        %dd= @measurement_gauge.number_vibration_sensor
+      .col-md-2
+        %dt= MeasurementGauge.human_attribute_name :number_local_vibration_sensor1
+        %dd= @measurement_gauge.number_local_vibration_sensor1
+
+      .col-md-2
+        %dt=  MeasurementGauge.human_attribute_name :number_local_vibration_sensor2
+        %dd= @measurement_gauge.number_local_vibration_sensor2
+    .row
+      .col-md-2
+        %dt= MeasurementGauge.human_attribute_name :number_noise_sensor
+        %dd= @measurement_gauge.number_noise_sensor
+
+      .col-md-2
+        %dt= MeasurementGauge.human_attribute_name :number_infrasound_sensor
+        %dd= @measurement_gauge.number_infrasound_sensor
+      .col-md-2
+        %dt= MeasurementGauge.human_attribute_name :control_tool
+        %dd= @measurement_gauge.control_tool.id
+
+
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику датчиков', measurement_gauges_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_measurement_gauge_path(@measurement_gauge), class: 'btn btn-primary btn-sm'

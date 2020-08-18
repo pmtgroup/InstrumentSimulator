@@ -1,0 +1,16 @@
+.page-header.text-center
+  %h1= t('headers.control_tools.show')
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= ControlTool.human_attribute_name(:workpoint)
+        %dd= @control_tool.workpoint.name
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику средств контроля', control_tools_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_control_tool_path(@control_tool), class: 'btn btn-primary btn-sm'

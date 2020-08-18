@@ -1,0 +1,67 @@
+.page-header
+  %h3= "Работник - #{@noise_indicator.staff_worker.full_name} "
+  %h3= "ID - #{@noise_indicator.staff_worker.id}"
+.col-md-6.col-md-offset-3
+  .row
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= "Результаты расчёта эквивалентных уровней за рабочую смену"
+          %th= "Показатели"
+      %tbody
+        %tr
+          %td= NoiseIndicator.human_attribute_name :terms
+          %td= @noise_indicator.terms
+        %tr
+          %td= NoiseIndicator.human_attribute_name :min_lvl
+          %td= @noise_indicator.min_lvl
+        %tr
+          %td= NoiseIndicator.human_attribute_name :max_lvl
+          %td= @noise_indicator.max_lvl
+
+        %tr
+          %td= NoiseIndicator.human_attribute_name :pulse_noise
+          %td= @noise_indicator.pulse_noise
+        %tr
+          %td= NoiseIndicator.human_attribute_name :peak_lvl
+          %td= @noise_indicator.peak_lvl
+        %tr
+          %td= NoiseIndicator.human_attribute_name :equivalent_lvl
+          %td= @noise_indicator.equivalent_lvl
+        %tr
+          %td= NoiseIndicator.human_attribute_name :character_noise
+          %td= @noise_indicator.character_noise
+        %tr
+          %td{ colspan: 2 }= "Эквивалентные уровни звукового давления за смену (дБ) в октавных полосах частот (Гц):"
+
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_31
+          %td= @noise_indicator.frequency_31
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_63
+          %td= @noise_indicator.frequency_63
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_125
+          %td= @noise_indicator.frequency_125
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_250
+          %td= @noise_indicator.frequency_250
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_500
+          %td= @noise_indicator.frequency_500
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_1000
+          %td= @noise_indicator.frequency_1000
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_2000
+          %td= @noise_indicator.frequency_2000
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_4000
+          %td= @noise_indicator.frequency_4000
+        %tr
+          %td= NoiseIndicator.human_attribute_name :frequency_8000
+          %td= @noise_indicator.frequency_8000
+  .text-center
+    %br/
+    %br/
+    = link_to 'На страницу работника', staff_worker_path(@noise_indicator.staff_worker), class: 'btn btn-primary btn-sm'

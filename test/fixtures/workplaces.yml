@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_vpf: MyString
+  shift_duration: 1
+  number_of_shift: 1
+  subdivision_id: 
+
+two:
+  type_vpf: MyString
+  shift_duration: 1
+  number_of_shift: 1
+  subdivision_id: 

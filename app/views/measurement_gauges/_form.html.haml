@@ -1,0 +1,32 @@
+= simple_form_for @measurement_gauge, html: { class: 'col-md-6 col-md-offset-3 text-center', role: 'form1' } do |f|
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :number_vibration_sensor
+    .col-md-8
+      .form-group
+        = f.input :number_local_vibration_sensor1
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :number_local_vibration_sensor2
+    .col-md-8
+      .form-group
+        = f.input :number_noise_sensor
+
+  .row.col-md-offset-3
+    .col-md-8
+      .form-group
+        = f.input :number_infrasound_sensor
+    .col-md-8
+      .form-group
+        = f.association :control_tool, collection: ControlTool.all.map{|x| [x.id, x.id]}
+        -# = f.input :kind_of_action
+
+
+  %br/
+
+  .form-actions
+    = link_to "Назад", MeasurementGauge,  class: 'btn btn-primary'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

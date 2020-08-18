@@ -1,0 +1,33 @@
+.page-header
+  %h1= "#{@company.name}"
+%br/
+%br/
+%dl
+  .well.col-md-12
+    .row
+      .col-md-2
+        %dt= Company.human_attribute_name(:name)
+        %dd= @company.name
+      .col-md-2
+        %dt= Company.human_attribute_name(:full_name)
+        %dd= @company.full_name
+    .row
+      .col-md-2
+        %dt= Company.human_attribute_name(:inn)
+        %dd= @company.inn
+      .col-md-2
+        %dt= Company.human_attribute_name(:orgn)
+        %dd= @company.orgn
+    .row
+      .col-md-2
+        %dt= Company.human_attribute_name(:kind_of_action)
+        %dd= @company.kind_of_action
+      .col-md-2
+        %dt= Company.human_attribute_name(:location)
+        %dd= @company.location
+
+.text-center
+  %br/
+  %br/
+  = link_to 'К кспику предприятий', companies_path, class: 'btn btn-primary btn-sm'
+  = link_to 'Изменить', edit_company_path(@company), class: 'btn btn-primary btn-sm'

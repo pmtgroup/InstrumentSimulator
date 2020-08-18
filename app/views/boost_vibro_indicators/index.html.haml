@@ -1,0 +1,19 @@
+%h1 Listing boost_vibro_indicators
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @boost_vibro_indicators.each do |boost_vibro_indicator|
+      %tr
+        %td= link_to 'Show', boost_vibro_indicator
+        %td= link_to 'Edit', edit_boost_vibro_indicator_path(boost_vibro_indicator)
+        %td= link_to 'Destroy', boost_vibro_indicator, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Boost vibro indicator', new_boost_vibro_indicator_path
