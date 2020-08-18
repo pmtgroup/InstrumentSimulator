@@ -1,5 +1,5 @@
 class BoostVibroIndicatorsController < ApplicationController
-  before_action :set_boost_vibro_indicator, only: [:show, :edit, :update, :destroy],
+  before_action :set_boost_vibro_indicator, only: [:show, :edit, :update, :destroy]
 
   # GET /boost_vibro_indicators
   # GET /boost_vibro_indicators.json
