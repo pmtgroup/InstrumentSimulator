@@ -3,28 +3,48 @@
 = link_to new_workpoint_path, class: 'btn btn-success' do
   = fa_icon :plus
   = "Создать рабочую точку"
-
-%br
-%br
-
 %table.table.table-hover
+  %caption
+= search_form_for @q , html: { class: 'form-inline form-inline-search form-inline-5 text-center', role: 'form' } do |f|
+  = f.search_field 'workplace_subdivision_company_name_eq', class: 'form-control', placeholder: "Предприятие"
+  = f.search_field 'workplace_subdivision_name_eq', class: 'form-control', placeholder: "Подразделение"
+  = f.search_field 'workplace_name_eq', class: 'form-control', placeholder: "Рабочее место"
+  -# = f.search_field 'last_visit_eq', class: 'form-control', placeholder: "Дата формата дд.мм.гггг"
+
+  %br
+  %br
+  .inline.text-center
+    = f.submit 'Поиск', class: 'btn btn-primary'
+    = link_to 'Сбросить', workpoints_path, class: 'btn btn-default'
+%br
+%br
+
+%table.table.table-hover.sortable
   %thead
     %tr
-    %th= Workpoint.human_attribute_name :name
-    %th= Workpoint.human_attribute_name :description
-    %th= Workpoint.human_attribute_name :type_vpf
-    %th= Workpoint.human_attribute_name :workplace
-    %th
-    %th
-    %th
+      %th= Workpoint.human_attribute_name :uniq_number_id
+      %th= Workpoint.human_attribute_name :number_id
+      %th= "Предприятие"
+      %th= "Подразделение"
+      %th= Workpoint.human_attribute_name :workplace
+      %th= Workpoint.human_attribute_name :name
+      %th= Workpoint.human_attribute_name :description
+      %th= Workpoint.human_attribute_name :type_vpf
+      %th
+      %th
+      %th
 
   %tbody
     - @workpoints.each do |workpoint|
       %tr.tr-href{data: {link: workpoint_path(workpoint)}}
+        %td= workpoint.uniq_number_id.present? ? workpoint.uniq_number_id : " "
+        %td= workpoint.number_id.present? ? workpoint.number_id : " "
+        %td= workpoint.workplace.subdivision.company.name
+        %td= workpoint.workplace.subdivision.name
+        %td= workpoint.workplace.name.present? ? workpoint.workplace.name : workpoint.workplace.id
         %td= workpoint.name
         %td= workpoint.description
         %td= workpoint.type_vpf
-        %td= workpoint.workplace.id
         %td
           = link_to workpoint, class: 'btn btn-success' do
             = fa_icon :eye

@@ -4,7 +4,8 @@ class WorkplacesController < ApplicationController
   # GET /workplaces
   # GET /workplaces.json
   def index
-    @workplaces = Workplace.all
+    @q = Workplace.eager_load(:subdivision => :company).ransack(params[:q])
+    @workplaces = @q.result(distinct: true)
   end
 
   # GET /workplaces/1
@@ -69,6 +70,6 @@ class WorkplacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workplace_params
-      params.require(:workplace).permit(:type_vpf, :shift_duration, :number_of_shift, :subdivision_id)
+      params.require(:workplace).permit(:type_vpf, :shift_duration, :number_of_shift, :subdivision_id, :number_id, :name)
     end
 end

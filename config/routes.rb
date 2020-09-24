@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :boost_vibro_indicators
   resources :total_vibration_indicators
   resources :noise_indicators
-  resources :staff_workers
+  resources :staff_workers do
+    collection do
+      get 'result_control'
+    end
+  end
   resources :sensors
   resources :measurement_gauges
   resources :register_signals

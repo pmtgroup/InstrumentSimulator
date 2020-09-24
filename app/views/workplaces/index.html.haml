@@ -3,28 +3,47 @@
 = link_to new_workplace_path, class: 'btn btn-success' do
   = fa_icon :plus
   = "Создать рабочее место"
-
-%br
-%br
-
 %table.table.table-hover
+  %caption
+= search_form_for @q , html: { class: 'form-inline form-inline-search form-inline-5 text-center', role: 'form' } do |f|
+  = f.search_field 'subdivision_company_name_eq', class: 'form-control', placeholder: "Предприятие"
+  = f.search_field 'subdivision_name_eq', class: 'form-control', placeholder: "Подразделение"
+  -# = f.search_field 'last_visit_eq', class: 'form-control', placeholder: "Дата формата дд.мм.гггг"
+
+  %br
+  %br
+  .inline.text-center
+    = f.submit 'Поиск', class: 'btn btn-primary'
+    = link_to 'Сбросить', workplaces_path, class: 'btn btn-default'
+%br
+%br
+
+%table.table.table-hover.sortable
   %thead
     %tr
-    %th= Workplace.human_attribute_name :type_vpf
-    %th= Workplace.human_attribute_name :shift_duration
-    %th= Workplace.human_attribute_name :number_of_shift
-    %th= Workplace.human_attribute_name :subdivision
-    %th
-    %th
-    %th
+      %th= Workplace.human_attribute_name :number_id
+      %th= "Предприятие"
+      %th= Workplace.human_attribute_name :subdivision
+      %th= Workplace.human_attribute_name :name
+      %th= Workplace.human_attribute_name :type_vpf
+      %th= Workplace.human_attribute_name :shift_duration
+      %th= Workplace.human_attribute_name :number_of_shift
+
+      %th
+      %th
+      %th
 
   %tbody
     - @workplaces.each do |workplace|
       %tr.tr-href{data: {link: workplace_path(workplace)}}
+        %td= workplace.number_id.present? ? workplace.number_id : " "
+        %td= workplace.subdivision.company.name
+        %td= workplace.subdivision.name
+        %td= workplace.name.present? ?  workplace.name : " "
         %td= workplace.type_vpf
         %td= workplace.shift_duration
         %td= workplace.number_of_shift
-        %td= workplace.subdivision.name
+
         %td
           = link_to workplace, class: 'btn btn-success' do
             = fa_icon :eye

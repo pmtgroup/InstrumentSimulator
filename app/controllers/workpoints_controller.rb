@@ -4,7 +4,9 @@ class WorkpointsController < ApplicationController
   # GET /workpoints
   # GET /workpoints.json
   def index
-    @workpoints = Workpoint.all
+    @q = Workpoint.eager_load(:workplace => {:subdivision => :company}).ransack(params[:q])
+    @workpoints = @q.result(distinct: true)
+    # @workpoints = Workpoint.all
   end
 
   # GET /workpoints/1
@@ -25,7 +27,7 @@ class WorkpointsController < ApplicationController
   # POST /workpoints.json
   def create
     @workpoint = Workpoint.new(workpoint_params)
-
+    @workpoint.uniq_number_id = "#{Company.where(id: Subdivision.where(id: Workplace.find(@workpoint.workplace_id).subdivision_id).last.company_id).last.number_id}" + "#{Subdivision.where(id: Workplace.find(@workpoint.workplace_id).subdivision_id).last.number_id}" + "#{Workplace.find(@workpoint.workplace_id).number_id}" + "#{@workpoint.number_id}"
     respond_to do |format|
       if @workpoint.save
         format.html { redirect_to @workpoint, notice: 'Данные сохранены' }
@@ -69,6 +71,6 @@ class WorkpointsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workpoint_params
-      params.require(:workpoint).permit(:name, :description, :type_vpf, :workplace_id, :description_file)
+      params.require(:workpoint).permit(:name, :description, :type_vpf, :workplace_id, :description_file, :number_id, :uniq_number_id)
     end
 end

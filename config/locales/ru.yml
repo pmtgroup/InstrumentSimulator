@@ -201,6 +201,7 @@ ru:
         frequency_4000:   4000 Гц
         frequency_8000:   8000 Гц
       staff_worker:
+        number_id:   ID работника
         full_name: Ф.И.О.
         name:   Имя
         surname: Фамилия
@@ -240,23 +241,29 @@ ru:
         id: ID
         workpoint: Рабочая точка
       workpoint:
+        number_id:   ID рабочей точки
+        uniq_number_id: Уникальный ID рабочей точки
         name:        Наименование
         description: Описание
         description_file: Файл описания
         type_vpf:    Вид измеряемого ВПФ
         workplace: Рабочее место
       workplace:
+        name:   Наименование рабочего места
+        number_id:   ID рабочего места
         type_vpf: Тип ВПФ на рабочем месте
         shift_duration: Продолжительность одной рабочей смены
         number_of_shift: Количество рабочих смен в сутки
         subdivision: Подразделение
       subdivision:
+        number_id:   ID подразделения
         name: Наименование подразделения
         full_name: Наименование подразделения полное
         company: Предприятие
       company:
-        name: Наименование придприятия
-        full_name:  Наименование придприятия полное
+        number_id:   ID предприятия
+        name: Наименование предприятия
+        full_name:  Наименование предприятия полное
         inn:        ИНН
         orgn:       ОГРН
         kind_of_action: Вид деятельности

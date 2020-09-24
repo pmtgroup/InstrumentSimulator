@@ -4,7 +4,9 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @q = Company.ransack(params[:q])
+    @companies = @q.result(distinct: true)
+    # @companies = Company.all
   end
 
   # GET /companies/1
@@ -69,6 +71,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :full_name, :inn, :orgn, :kind_of_action, :location)
+      params.require(:company).permit(:name, :full_name, :inn, :orgn, :kind_of_action, :location, :number_id)
     end
 end

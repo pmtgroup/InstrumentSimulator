@@ -1,36 +1,54 @@
-.page-header.text-center
+.page-header
   %h1= t('headers.people.index')
 
-%nav{class: 'menu'}
-  = link_to ad_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Тонометр (АД)"
+%table.table.table-hover
+  %caption
+    = link_to new_person_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.person')
+= search_form_for @q , html: { class: 'form-inline form-inline-search form-inline-5 text-center', role: 'form' } do |f|
+  = f.search_field 'mark_car_or_model_car_start', class: 'form-control', placeholder: "Марка или Модель"
+  = f.search_field 'number_car_start', class: 'form-control', placeholder: "ГОС номер"
+  = f.search_field 'last_visit_eq', class: 'form-control', placeholder: "Дата формата дд.мм.гггг"
 
-  = link_to heart_rate_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Тонометр (ЧСС)"
+  %br
+  %br
+  .inline.text-center
+    = f.submit 'Поиск', class: 'btn btn-primary'
+    = link_to 'Сбросить', people_path, class: 'btn btn-default'
+%br
+%br
+%table.table.table-hover.sortable
+  %thead
+    %tr
+      %th= Person.human_attribute_name(:mark_car)
+      %th= Person.human_attribute_name(:model_car)
+      %th= Person.human_attribute_name(:number_car)
+      %th= Person.human_attribute_name(:last_visit)
+      %th= Person.human_attribute_name(:fio)
+      %th= Person.human_attribute_name(:contact_phone)
+      %th= Person.human_attribute_name(:description)
+      %th
+      %th
 
-  = link_to spirometr_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Спирометр"
 
-  = link_to glucometr_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Глюкометр"
-
-  = link_to weigher_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Весы"
-
-  = link_to vibrotester_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Вибротестер"
-
-  = link_to audiometer_person_path("test"), class: 'btn btn-success' do
-    = fa_icon :check
-    = "Аудиометр"
-
--# %table.table.table-hover
+  %tbody
+    - @people.each do |person|
+      %tr
+        %td= person.mark_car
+        %td= person.model_car
+        %td= person.number_car
+        %td= date_ru(person.last_visit)
+        %td= person.first_name + " " + person.second_name + " " + person.patronymic
+        -# %td= person.sex
+        %td= person.contact_phone
+        %td= person.description
+        %td
+          = link_to person, class: 'btn btn-success' do
+            = fa_icon :eye
+        %td
+          = link_to edit_person_path(person), class: 'btn btn-info' do
+            = fa_icon :edit
 -#   %caption
 -#     = link_to spirometr_person_path("test"), class: 'btn btn-success' do
 -#       = fa_icon :check

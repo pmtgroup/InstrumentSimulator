@@ -7,15 +7,15 @@
 %br
 %br
 
-%table.table.table-hover
+%table.table.table-hover.sortable
   %thead
     %tr
-    %th= Subdivision.human_attribute_name :name
-    %th= Subdivision.human_attribute_name :full_name
-    %th= Subdivision.human_attribute_name :company
-    %th
-    %th
-    %th
+      %th= Subdivision.human_attribute_name :name
+      %th= Subdivision.human_attribute_name :full_name
+      %th= Subdivision.human_attribute_name :company
+      %th
+      %th
+      %th
 
   %tbody
     - @subdivisions.each do |subdivision|

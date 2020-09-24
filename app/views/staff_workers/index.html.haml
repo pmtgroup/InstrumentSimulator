@@ -1,31 +1,45 @@
-.page-header.text-center
+.page-header
   %h1= t('headers.staff_workers.index')
 = link_to new_staff_worker_path, class: 'btn btn-success' do
   = fa_icon :plus
   = "Добавить работника"
-
-%br
-%br
-
 %table.table.table-hover
+  %caption
+= search_form_for @q , html: { class: 'form-inline form-inline-search form-inline-5 text-center', role: 'form' } do |f|
+  = f.search_field 'subdivision_company_name_eq', class: 'form-control', placeholder: "Предприятие"
+  = f.search_field 'subdivision_name_eq', class: 'form-control', placeholder: "Подразделение"
+  -# = f.search_field 'last_visit_eq', class: 'form-control', placeholder: "Дата формата дд.мм.гггг"
+
+  %br
+  %br
+  .inline.text-center
+    = f.submit 'Поиск', class: 'btn btn-primary'
+    = link_to 'Сбросить', staff_workers_path, class: 'btn btn-default'
+%br
+%br
+%br
+
+%table.table.table-hover.sortable
   %thead
     %tr
-    %th= StaffWorker.human_attribute_name :full_name
-    %th= StaffWorker.human_attribute_name :subdivision
-    %th= StaffWorker.human_attribute_name :birthday
-    %th= StaffWorker.human_attribute_name :position
-    %th= StaffWorker.human_attribute_name :duration_work
-    %th= StaffWorker.human_attribute_name :labor_activity_type
-    %th= StaffWorker.human_attribute_name :labor_activity_category
-    %th
-    %th
-    %th
+      %th= "Предприятие"
+      %th= "Подразделение"
+      %th= StaffWorker.human_attribute_name :full_name
+      %th= StaffWorker.human_attribute_name :birthday
+      %th= StaffWorker.human_attribute_name :position
+      %th= StaffWorker.human_attribute_name :duration_work
+      %th= StaffWorker.human_attribute_name :labor_activity_type
+      %th= StaffWorker.human_attribute_name :labor_activity_category
+      %th
+      %th
+      %th
 
   %tbody
     - @staff_workers.each do |staff_worker|
       %tr
-        %td= staff_worker.surname + " " +  staff_worker.name + " " +   staff_worker.patronymic
+        %td= staff_worker.subdivision.company.name
         %td= staff_worker.subdivision.name
+        %td= staff_worker.surname + " " +  staff_worker.name + " " +   staff_worker.patronymic
         %td= l staff_worker.birthday, format: :default
         %td= staff_worker.position
         %td= l staff_worker.duration_work, format: :default

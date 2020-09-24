@@ -1,24 +1,38 @@
 %aside.hidden-print#sidebar-wrapper
-  - side_bar_items.each do |item|
-    - if is_open?(item[:controller])
-      = link_to(url_for(controller: item[:controller], action: item[:action])) do
-        .sidebar-item.selected
-          .row
-            .col-xs-2.text-center
-              = fa_icon(item[:icon], class: 'fa-2x')
-            .col-xs-10.text-left
-              = item[:name]
-    - else
-      = link_to(url_for(controller: item[:controller], action: item[:action])) do
-        .sidebar-item
-          .row
-            .col-xs-2.text-center
-              = fa_icon(item[:icon], class: 'fa-2x')
-            .col-xs-10.text-left
-              = item[:name]
-  .sidebar-footer
-    .row
-      .col-xs-12.text-center
-        = link_to("https://github.com/mirandov/Infobez") do
-          = fa_icon('github', class: 'fa-1x')
-          = "mirandov"
+  %ul.sidebar-nav
+    - side_bar_items.each do |item|
+      %li
+        - if item.has_key?(:children)
+          = link_to('#', class: 'with-subitems') do
+            = fa_icon(item[:icon], class: 'menu-icon')
+            = item[:name]
+            %span.pull-right.carret
+              = fa_icon('angle-down', class: 'menu-icon')
+          %ul.subitems{class: (item[:children].any?{ |subitem| is_open?(subitem[:controller], subitem[:action]) } ? :subopen : :subclose)}
+            - item[:children].each do |subitem|
+              %li.subitem
+              - if subitem.has_key?(:params)
+                = link_to(url_for({controller: subitem[:controller], action: subitem[:action]}.merge(subitem[:params])), class: subitem[:class]) do
+                  = fa_icon(subitem[:icon], class: 'menu-icon')
+                  = subitem[:name]
+              - else
+                = link_to(url_for(controller: subitem[:controller], action: subitem[:action]), class: subitem[:class]) do
+                  = fa_icon(subitem[:icon], class: 'menu-icon')
+                  = subitem[:name]
+        -else
+          = link_to(url_for(controller: item[:controller], action: item[:action])) do
+            = fa_icon(item[:icon], class: 'fa-2x')
+            = item[:name]
+    %li.footer
+      %div
+        © Л.Д. Мирандов
+    -# - if is_open?(item[:controller])
+    -#
+    -# - else
+    -#   = link_to(url_for(controller: item[:controller], action: item[:action])) do
+    -#     .sidebar-item
+    -#       .row
+    -#         .col-xs-2.text-center
+    -#           = fa_icon(item[:icon], class: 'fa-2x')
+    -#         .col-xs-10.text-left
+    -#           = item[:name]

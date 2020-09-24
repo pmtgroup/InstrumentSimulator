@@ -4,7 +4,9 @@ class StaffWorkersController < ApplicationController
   # GET /staff_workers
   # GET /staff_workers.json
   def index
-    @staff_workers = StaffWorker.all
+    @q = StaffWorker.eager_load(:subdivision => :company).ransack(params[:q])
+    @staff_workers = @q.result(distinct: true)
+    # @staff_workers = StaffWorker.all
   end
 
   # GET /staff_workers/1
@@ -20,6 +22,15 @@ class StaffWorkersController < ApplicationController
   # GET /staff_workers/new
   def new
     @staff_worker = StaffWorker.new
+  end
+
+  def result_control
+    @staff_worker = StaffWorker.find(params[:id])
+    @noise_indicators = NoiseIndicator.where(staff_worker_id: @staff_worker.id)
+    @total_vibration_indicators = TotalVibrationIndicator.where(staff_worker_id: @staff_worker.id)
+    @local_vib_f_indicators =  LocalVibFIndicator.where(staff_worker_id: @staff_worker.id)
+    @local_vib_s_indicators =  LocalVibSIndicator.where(staff_worker_id: @staff_worker.id)
+    @working_operations  = WorkingOperation.where(staff_worker_id: @staff_worker.id)
   end
 
   # GET /staff_workers/1/edit
@@ -74,6 +85,6 @@ class StaffWorkersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_worker_params
-      params.require(:staff_worker).permit(:name, :surname, :patronymic, :subdivision_id, :birthday, :position, :duration_work, :labor_activity_type, :labor_activity_category, :duration_one_shift, :workplace_id, :work_in_workplace, :description_operation,:additional_workplace_id, :additional_work_in_workplace, :additional_description_operation)
+      params.require(:staff_worker).permit(:name, :surname, :patronymic, :number_id, :subdivision_id, :birthday, :position, :duration_work, :labor_activity_type, :labor_activity_category, :duration_one_shift, :workplace_id, :work_in_workplace, :description_operation,:additional_workplace_id, :additional_work_in_workplace, :additional_description_operation)
     end
 end

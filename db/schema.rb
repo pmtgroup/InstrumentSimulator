@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200818105807) do
+ActiveRecord::Schema.define(version: 20200924110438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20200818105807) do
     t.text     "location"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "number_id"
   end
 
   create_table "control_tools", force: :cascade do |t|
@@ -208,6 +209,7 @@ ActiveRecord::Schema.define(version: 20200818105807) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "position"
+    t.string   "number_id"
   end
 
   add_index "staff_workers", ["additional_workplace_id"], name: "index_staff_workers_on_additional_workplace_id", using: :btree
@@ -220,6 +222,7 @@ ActiveRecord::Schema.define(version: 20200818105807) do
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "number_id"
   end
 
   add_index "subdivisions", ["company_id"], name: "index_subdivisions_on_company_id", using: :btree
@@ -268,6 +271,8 @@ ActiveRecord::Schema.define(version: 20200818105807) do
     t.integer  "subdivision_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "number_id"
+    t.string   "name"
   end
 
   add_index "workplaces", ["subdivision_id"], name: "index_workplaces_on_subdivision_id", using: :btree
@@ -280,6 +285,8 @@ ActiveRecord::Schema.define(version: 20200818105807) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "description_file"
+    t.string   "number_id"
+    t.string   "uniq_number_id"
   end
 
   add_index "workpoints", ["workplace_id"], name: "index_workpoints_on_workplace_id", using: :btree
