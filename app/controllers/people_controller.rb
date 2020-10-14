@@ -59,6 +59,82 @@ class PeopleController < ApplicationController
     end
   end
 
+  def state_win
+    api_state_win(Date.today)
+  end
+
+  def api_state_win(date)
+    uri          = URI.parse("http://195.222.181.180:5331/api/state")
+    request      = Net::HTTP::Get.new(uri, 'Content-Type' => 'application/json')
+    response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(request)
+    end
+    result = JSON.parse(response.body)
+    puts result
+    redirect_to staff_workers_path, notice: "#{result}"
+  end
+
+  def confing_win
+    api_confing_win(Date.today)
+  end
+
+  def api_confing_win(date)
+    uri          = URI.parse("http://195.222.181.180:5331/api/configuration")
+    request      = Net::HTTP::Get.new(uri, 'Content-Type' => 'application/json')
+    response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(request)
+    end
+    result = JSON.parse(response.body)
+    puts result
+    redirect_to staff_workers_path, notice: "#{result["result"]}"
+  end
+
+  def device_cmd_win
+    if deviceid.present?
+      api_device_cmd_win(params)
+    end
+  end
+
+  def api_device_cmd_win(deviceid, cmd)
+    body_msg     = "{\"deviceid\":#{0},\"cmd\":\"#{0}\"}"
+    uri          = URI.parse("http://195.222.181.180:5331/api/deviceCmd")
+    request      = Net::HTTP::Get.new(uri, 'Content-Type' => 'application/json')
+    response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(request)
+    end
+    result = JSON.parse(response.body)
+    puts result
+
+    # raise result
+    redirect_to staff_workers_path, notice: "#{result}"
+  end
+
+  def api_timechart(from, to)
+    # body_msg     = "{\"from\":#{0},\"to\":\"#{0}\"}"
+    uri          = URI.parse("http://195.222.181.180:5331/api/timechart")
+    request      = Net::HTTP::Get.new(uri, 'Content-Type' => 'application/json')
+    response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(request)
+    end
+    result = JSON.parse(response.body)
+    puts result
+
+    # raise result
+    redirect_to staff_workers_path, notice: "#{result}"
+  end
+
+  def api_alarm
+    body_msg     = "{\"deviceid\":#{1}}"
+    uri          = URI.parse("http://195.222.181.180:5331/api/alarm")
+    request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(request)
+    end
+    result = JSON.parse(response.body)
+    puts result
+    redirect_to staff_workers_path, notice: "#{result}"
+  end
+
   def api_ad(systolic_bp, diastolic_bp, complect_id)
     if systolic_bp.present?
       body_msg     = "{\"systolic_bp\":#{systolic_bp},\"diastolic_bp\":\"#{diastolic_bp}\",\"complect_id\":#{complect_id}}"
