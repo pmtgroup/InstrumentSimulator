@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: simulator_production
-  username: simul
-  password: N5xDHsA2chrnbw5nFkSE579C2CMjSkKJY
+  host: ec2-52-212-228-71.eu-west-1.compute.amazonaws.com
+  database: d4760v11qntnv
+  username: hcazfqeukkwfll
+  password: 2c8750789f1848ed71065b914cddb3d2a666bc0899af1bbc7dc75caa2236d154
