@@ -1,2 +1,0 @@
-module StaffWorkersHelper
-end

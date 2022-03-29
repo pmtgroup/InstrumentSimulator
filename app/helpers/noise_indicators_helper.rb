@@ -1,2 +1,0 @@
-module NoiseIndicatorsHelper
-end

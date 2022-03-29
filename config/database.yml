@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: simulator_production
-  username: first
-  password: <%= ENV['FIRST_DATABASE_PASSWORD'] %>
+  username: simul
+  password: N5xDHsA2chrnbw5nFkSE579C2CMjSkKJY
