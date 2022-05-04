@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :workplaces
   resources :subdivisions
   resources :companies
-  root 'staff_workers#index'
+  root 'people#index'
 
 
   resources :people do

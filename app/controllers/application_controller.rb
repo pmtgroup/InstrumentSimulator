@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :clear_params
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
+
+  def default_url_options(options=nil)
+    { port: 8080, only_path: false, protocol: 'http' }
+  end
 
   def after_sign_in_path(resource)
     mains_path

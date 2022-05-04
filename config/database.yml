@@ -23,8 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: simulator_development
-
+  database: simulator_production
+  username: simul
+  password: N5xDHsA2chrnbw5nFkSE579C2CMjSkKJY
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is

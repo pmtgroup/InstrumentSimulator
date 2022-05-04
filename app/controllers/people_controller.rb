@@ -2,6 +2,9 @@ class PeopleController < ApplicationController
   require 'net/http'
   require 'uri'
   require 'json'
+
+  URL_END_POINT = 'http://localhost'
+
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
@@ -62,7 +65,7 @@ class PeopleController < ApplicationController
   def api_ad(systolic_bp, diastolic_bp, complect_id)
     if systolic_bp.present?
       body_msg     = "{\"systolic_bp\":#{systolic_bp},\"diastolic_bp\":\"#{diastolic_bp}\",\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/ad")
+      uri          = URI.parse("#{URL_END_POINT}/api/ad")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -78,7 +81,7 @@ class PeopleController < ApplicationController
   def api_heart_rate(heart_rate, complect_id)
     if heart_rate.present?
       body_msg     = "{\"heart_rate\":#{heart_rate},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/heart_rate")
+      uri          = URI.parse("#{URL_END_POINT}/api/heart_rate")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -94,7 +97,7 @@ class PeopleController < ApplicationController
   def api_spirometr(pos_exhalation, ofv1, fgel, complect_id)
     if pos_exhalation.present?
       body_msg     = "{\"pos_exhalation\":#{pos_exhalation},\"ofv1\":\"#{ofv1}\",\"fgel\":#{fgel},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/spiroment")
+      uri          = URI.parse("#{URL_END_POINT}/api/spiroment")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -110,7 +113,7 @@ class PeopleController < ApplicationController
   def api_glucometr(glucose, complect_id)
     if glucose.present?
       body_msg     = "{\"glucose\":#{glucose},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/blood_glucose_meter")
+      uri          = URI.parse("#{URL_END_POINT}/api/blood_glucose_meter")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -126,7 +129,7 @@ class PeopleController < ApplicationController
   def api_weigher(weight, complect_id)
     if weight.present?
       body_msg     = "{\"weight\":#{weight},\"complect_id\":#{complect_id}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/weigher")
+      uri          = URI.parse("#{URL_END_POINT}/api/weigher")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -142,7 +145,7 @@ class PeopleController < ApplicationController
   def api_vibrotester(params)
     if params[:hr63].present?
       body_msg     = "{\"hr63\":#{params[:hr63]},\"hr125\":#{params[:hr125]},\"hr250\":#{params[:hr250]},\"hl63\":#{params[:hl63]},\"hl125\":#{params[:hl125]},\"hl250\":#{params[:hl250]},\"fr125\":#{params[:fr125]},\"fl125\":#{params[:fl125]},\"complect_id\":#{params[:complect_id]}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/vibrotester")
+      uri          = URI.parse("#{URL_END_POINT}/api/vibrotester")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -158,7 +161,7 @@ class PeopleController < ApplicationController
   def api_audiometer(params)
     if params[:ac_250_right].present?
       body_msg     = "{\"ac_250_right\":#{params[:ac_250_right]},\"ac_500_right\":#{params[:ac_500_right]},\"ac_1000_right\":#{params[:ac_1000_right]},\"ac_2000_right\":#{params[:ac_2000_right]},\"ac_4000_right\":#{params[:ac_4000_right]},\"ac_250_left\":#{params[:ac_250_left]},\"ac_500_left\":#{params[:ac_500_left]},\"ac_1000_left\":#{params[:ac_1000_left]},\"ac_2000_left\":#{params[:ac_2000_left]},\"ac_4000_left\":#{params[:ac_4000_left]},\"complect_id\":#{params[:complect_id]}}"
-      uri          = URI.parse("https://stage.pmtonline.ru/api/audiometer")
+      uri          = URI.parse("#{URL_END_POINT}/api/audiometer")
       request      = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = body_msg
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
